@@ -22,7 +22,7 @@ Counting each listed syllabus unit as one, except for the intentional consolidat
 | Path 3 — Describe Azure management and governance | 6 + 5 + 4 + 4 | 19 |
 | **Calculated total** | **15 + 33 + 19** | **67** |
 
-**Count discrepancy to resolve:** The intended project total was recalled as **61 or 62 units**, but the current Badge Links module lists produce **67 app units** after the known five-unit consolidation. That leaves a difference of **5–6 units**. No additional units have been silently removed to force the total to match. Before changing the curriculum count, identify which entries are intended to be merged, excluded, or treated as non-lesson navigation items.
+**Count decision:** The authoritative count from the current Badge Links reference, after the one confirmed consolidation in Learning Path 1, Module 1, is **67 listed app units**. The remembered target of **61 or 62** would require excluding or merging another five or six entries. The reference does not identify those exclusions, so I have not removed lessons or relabelled the total to match a guess. The exact app count can only be confirmed by inspecting the prototype's actual curriculum data; the repository currently contains the prototype as a ZIP rather than inspectable source files.
 
 ## Work completed in this reconciliation
 
@@ -43,6 +43,6 @@ Counting each listed syllabus unit as one, except for the intentional consolidat
 1. Reconcile the **61/62 versus 67** unit-count discrepancy with the intended app counting convention.
 2. Review each split lesson for accuracy and ensure the extraction has not left duplicated or missing material.
 3. Markdown links in the root README, all three learning-path indexes, and this status document have been checked; no broken internal links were found. The app/prototype curriculum data still needs to be compared with these canonical Markdown indexes.
-4. Recheck service names and exam coverage against the current Microsoft Learn study guide before release.
+4. Recheck service names and exam coverage against the current Microsoft Learn study guide before release. The current study guide explicitly lists the three exam domains and their objectives; it does not list the reference's AI/ML/IoT/Edge unit, encryption/key management, or Service Trust Portal as standalone objectives. Keep those items because the Badge Links reference includes them, but label them as reference-aligned enrichment/supplementary coverage rather than claiming they are explicit current exam objectives. [Official study guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900).
 
 The unit indexes describe the intended learner-facing sequence. This status file deliberately does not claim that every lesson has completed a technical review.
