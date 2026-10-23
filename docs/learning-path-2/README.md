@@ -2,9 +2,9 @@
 
 **Primary reference:** [AZ-900 Badge Links Reference](../AZ-900-BADGE-LINKS-REFERENCE.md)
 
-This index follows the unit titles and order in the Badge Links reference. The files currently present in the repository do **not yet fully match that syllabus**. Where a lesson is absent or the existing lesson only partially matches, this index says so rather than pretending that the unit is complete.
+This index follows the unit order in the Badge Links reference and links to dedicated lesson files for all five modules. The combined notes have been split, with original versions preserved under supplementary content. The supplied notes contain one verified title discrepancy in networking Unit 2, documented in the source reference and reflected here.
 
-The module and unit numbering here follows the supplied Badge Links notes. Microsoft Learn's current learning path may have updated titles or a different unit count; the reference document flags entries that need verification.
+The module and unit numbering follows the intended CloudPath sequence. Current Microsoft Learn remains authoritative for exam scope and technical accuracy.
 
 ## Module 1 — Describe the core architectural components of Azure
 
@@ -72,13 +72,11 @@ The existing Public and Private Endpoints topic has been preserved as [supplemen
 
 The combined original storage, identity, security, and networking notes have been preserved in `supplementary/` before splitting. Public/private endpoints and VM Scale Sets/Availability Sets are also preserved as supplementary lessons.
 
-## Correction plan
+## Reconciliation notes
 
-1. Preserve the Badge Links reference as the syllabus structure.
-2. Split combined lessons where a reference unit needs its own lesson.
-3. Move and relabel existing lessons only when their content matches the target unit.
-4. Preserve useful extra AZ-900 topics as supplementary lessons rather than replacing reference units.
-5. Verify the questionable “Create, configure, and manage users” entry against current Microsoft Learn before assigning it to a module.
-6. Audit all lesson content against the [official AZ-900 study guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900), which is the authority for current exam objectives.
+- Combined lessons were split into dedicated unit files, and original combined notes were preserved under supplementary content.
+- Virtual Machine Scale Sets and Availability Sets, plus Public/Private Endpoints, remain available as supplementary AZ-900 topics rather than replacing reference units.
+- The supplied networking Unit 2 title was checked against current Microsoft Learn; CloudPath uses “Describe Azure virtual networking” and records the discrepancy in the source reference.
+- Continue auditing the technical content of every lesson against the [official AZ-900 study guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900) before marking all objectives fully verified.
 
 **Current status:** All five modules now have reference-aligned unit files or dedicated pointers. The compute sequence has a dedicated AI/ML/IoT/Edge lesson; networking, storage, and identity/security combined notes have been split into dedicated units. The suspicious networking title was checked against current Microsoft Learn and documented as a source discrepancy. Original combined lessons and extra AZ-900 topics are preserved in `supplementary/`. Continue the content audit before marking every objective complete.
