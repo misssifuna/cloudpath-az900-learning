@@ -6,6 +6,8 @@ An unofficial, learner-built companion to the Microsoft Azure Fundamentals (AZ-9
 
 ## Project reference documents
 - [AZ-900 syllabus reference (badge links omitted)](docs/AZ-900-BADGE-LINKS-REFERENCE.md)
+- [Curriculum reconciliation and unit-count status](docs/CURRICULUM-RECONCILIATION-STATUS.md)
+- [AI Study Assistant implementation plan](docs/AI-ASSISTANT-IMPLEMENTATION-PLAN.md)
 - [Vibe Coding Hackathon assignment and judging criteria](docs/VIBE-CODING-HACKATHON-ASSIGNMENT.md)
 
 ## Module 1 — Describe cloud concepts
