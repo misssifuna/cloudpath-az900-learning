@@ -81,7 +81,7 @@ We have already met Azure Container Instances, Azure Container Apps, and Azure K
 
 These services overlap in some capabilities, so select based on the application's architecture and the amount of operational control needed.
 
-## 6. Application hosting options: compare the main choices
+## 7. Application hosting options: compare the main choices
 
 Azure App Service is one option, not the whole application-hosting picture. For AZ-900, recognize the broad choices and the trade-offs between control and management effort.
 
@@ -97,7 +97,7 @@ A school portal might use App Service for its web application, a database servic
 
 **Exam reminder:** App Service, Functions, containers, and virtual machines are not identical. Select the hosting model that fits the workload and the amount of infrastructure management the team wants to handle.
 
-## 7. Knowledge check
+## 8. Knowledge check
 
 ### Question 1
 
@@ -135,7 +135,7 @@ True or false: Using App Service means the developer no longer needs to secure t
 
 **Answer: False.** Azure manages much of the hosting platform, but customers remain responsible for their application, configuration, access, data, and cost management.
 
-## 8. Key takeaways
+## 9. Key takeaways
 
 - Azure App Service is a managed PaaS offering for web applications, REST APIs, and mobile back ends.
 - It supports popular stacks including .NET, Java, Node.js, Python, and PHP, as well as supported custom containers.
