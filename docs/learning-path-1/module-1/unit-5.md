@@ -212,6 +212,107 @@ C. A diagram of the subscription hierarchy.
 
 **Suggested answer:** To understand where charges come from, detect unexpected usage, adjust resources to match needs, and avoid unnecessary spending.
 
+## 5.9 Practical lab: Explore an Azure subscription and follow the costs
+
+**Mission:** Act as the school's junior cloud administrator. Identify the subscription available to your account, create a resource group, deploy a small resource only if you understand its possible charges, inspect cost information, and clean up what you created.
+
+**Important cost and billing reality:** Azure account offers vary. A new account may receive an eligible free offer and a default subscription, but this is not guaranteed for every account. Some offers require payment details. Creating resources can incur charges, and the Cost Analysis view may take time to show usage. A bill or invoice may not be available immediately, particularly if no charge has accrued. Never create a costly resource just to force a bill. If this is a class exercise, follow your instructor's approved sandbox or subscription instructions.
+
+### Before you start: safety checklist
+
+- Use an account and subscription you are authorised to use.
+- Check the offer, remaining credit, free-service limits, currency, and billing terms shown for your account.
+- Do not enter a payment method unless you understand the terms and have permission to do so.
+- Do not create a virtual machine for this exercise unless your instructor has approved it and you know how to stop and delete it.
+- Set a budget or cost alert if the available subscription supports it; an alert is not necessarily a hard spending limit.
+- Record the resource names you create so you can remove them afterwards.
+
+### Step A — Sign in and identify your subscription
+
+1. Open the [Azure portal](https://portal.azure.com/) and sign in. If you do not have an account, use Microsoft's official Azure account sign-up process and carefully review eligibility, payment, and offer terms before continuing.
+2. In the portal search bar, search for **Subscriptions** and open it.
+3. Look for the subscription available to your account. A new account may show a subscription such as **Azure subscription 1**, but names and offers vary.
+4. Open the subscription and note its **subscription name**, **subscription ID** (do not share it publicly), **status**, and **offer or billing information** visible to you.
+5. If the subscription list is empty or access is denied, stop and ask the instructor/account administrator to assign an approved subscription. Do not create another account to bypass access controls.
+
+**Checkpoint:** Can you explain what a subscription is and why it matters for resource access and cost tracking?
+
+### Step B — Create a resource group
+
+A resource group is a logical container for related resources. Creating one alone is generally not the same as deploying a billable compute resource, although always follow the portal's current guidance.
+
+1. In the portal, search for **Resource groups**.
+2. Select **Create**.
+3. Choose the subscription you identified in Step A.
+4. Choose a region for the resource group's metadata.
+5. Use a clear lab name, for example `rg-az900-school-lab`.
+6. Review the settings and create the resource group.
+7. Open it and confirm the subscription and region.
+
+**Checkpoint:** The resource group belongs to a subscription, but it is not itself the virtual machine, database, or storage service that may generate usage charges.
+
+### Step C — Understand the resource-creation screen before deploying anything
+
+1. In the portal search bar, search for **Storage accounts** and open the creation page, but do not select **Review + create** until you have reviewed all settings and possible costs.
+2. Observe the fields such as subscription, resource group, region, performance, redundancy, and other configuration options.
+3. Notice how the selected subscription and resource group determine where the resource is organised.
+4. Review the pricing and free-tier eligibility using the [Azure pricing page](https://azure.microsoft.com/pricing/) or the official pricing calculator before deploying.
+5. If you do not have an instructor-approved subscription or are unsure about charges, **stop at the review screen**. You can complete the remainder using the simulated exercise below without deploying a resource.
+
+If your instructor has approved deployment, create only the agreed low-cost resource, avoid uploading personal or school data, and record the creation time and configuration. Pricing and free allowances change; do not assume a resource is free merely because the portal offers a free tier.
+
+### Step D — Inspect cost information
+
+1. Search for **Cost Management + Billing** in the portal.
+2. Open **Cost Management** or **Cost analysis**, if available for your account and permissions.
+3. Select the relevant billing scope or subscription.
+4. Review the available date range, cost amount, service/resource breakdown, and any forecast or budget information shown.
+5. If no usage is visible yet, do not assume the service is broken. Usage data can take time to appear, and an account with no billable usage may show zero or no cost records.
+6. If your account has an invoice, open the invoice area and inspect the available billing period, totals, and line items. Do not publish or share personal billing details.
+
+**Important:** Cost analysis is not the same as a final invoice. An invoice is issued according to your billing agreement and billing period. You may not receive one immediately at the end of this lab.
+
+### Step E — Clean up the lab
+
+1. If you deployed a resource, first inspect it and confirm that you do not need anything stored in it.
+2. Delete the lab resource(s) you created, following your instructor's instructions.
+3. Verify that the resources have been deleted.
+4. Delete `rg-az900-school-lab` only after confirming it contains no resources you need. Deleting a resource group deletes its contained resources.
+5. Recheck Cost Management later to see whether any usage charges were recorded. Deleting resources prevents future use of those resources but does not erase charges already incurred.
+
+### If you cannot create an Azure account or do not have an active subscription
+
+Complete this no-cost conceptual simulation instead. These are sample values, not live Azure prices or a real bill.
+
+| Simulated item | Usage | Example rate | Example cost |
+|---|---:|---:|---:|
+| Virtual machine compute | 3 hours | KSh 10/hour | KSh 30 |
+| Storage | 5 GB-month | KSh 2/GB-month | KSh 10 |
+| Data transfer | 2 GB | KSh 3/GB | KSh 6 |
+| **Illustrative total** | | | **KSh 46** |
+
+These hypothetical rates are only for arithmetic practice. Actual Azure prices depend on service, region, configuration, agreement, and current pricing. Taxes, discounts, credits, and other charges are not included.
+
+### Practical questions to submit
+
+Answer these in your project notes or submission:
+
+1. What subscription was visible in your account? If you had no subscription, what prevented access?
+2. What is the difference between a subscription and a resource group?
+3. Which subscription did you select when creating the lab resource group?
+4. Which settings on the resource-creation screen could affect cost?
+5. Did Cost Analysis show any usage? Explain why the amount may be zero, delayed, or unavailable.
+6. Is Cost Analysis the same as an invoice? Explain the difference.
+7. What resource(s) did you create and delete? If you did not deploy anything, explain why stopping at the review screen was the safer choice.
+8. Using the hypothetical table above, calculate the total and explain which usage generated each charge.
+
+**Evidence to capture (hide personal identifiers):** a screenshot of the subscription list or subscription overview; the lab resource group and its resources (if any); and the Cost Analysis or simulated cost table. Hide subscription IDs, tenant IDs, email addresses, payment details, and other sensitive information before submitting.
+
+### Success criteria
+
+You have completed the exercise when you can identify a subscription, explain its relationship to resource groups and resources, identify where Azure cost information is reviewed, distinguish cost analysis from an invoice, and confirm that any lab resources have been cleaned up. A real invoice is not required if the billing period has not closed or no billable usage occurred.
+
+
 ## Key takeaway
 
 The consumption-based model connects cloud usage with cost. Azure provides a hierarchy—management groups, subscriptions, resource groups, and resources—to organize workloads and manage them. Understand which resource is being used, how it is priced, and the scope at which you review its costs.
