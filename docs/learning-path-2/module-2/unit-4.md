@@ -1,139 +1,138 @@
-# Learning Path 2 — Module 2, Unit 4: Azure App Service
+# Learning Path 2 — Module 2, Unit 4: Azure containers
 
 **Learning path:** Introduction to Cloud Infrastructure — Describe Azure architecture and services  
 **Module 2:** Describe Azure compute services  
-**Unit:** Azure App Service
+**Unit:** Describe Azure containers
 
 ## Learning objectives
 
 By the end of this unit, you should be able to:
 
-- Explain what Azure App Service is used for.
-- Recognize the difference between App Service and Azure Virtual Machines.
-- Explain the purpose of an App Service plan at a high level.
-- Identify scenarios where App Service is a suitable hosting option.
+- Explain what containers are and why developers use them.
+- Distinguish a container image from a running container.
+- Compare containers with virtual machines at a high level.
+- Recognize Azure Container Instances, Azure Container Apps, Azure Kubernetes Service, and Azure Container Registry.
 
-## 1. What is Azure App Service?
+## 1. What is a container?
 
-Azure App Service is a managed platform for hosting web applications, REST APIs, and mobile back ends. It is a platform-as-a-service (PaaS) offering: Azure manages much of the underlying hosting infrastructure so developers can focus more on their application.
+A **container** is an isolated environment for running an application. It packages the application and its dependencies so it can run consistently across compatible environments.
 
-Imagine Holy Trinity Boys Senior School wants an online portal for announcements, learning resources, and timetables. If you build the portal with Node.js or Python, App Service can host it so students and staff can access it over the internet.
+Imagine GeekHub develops a student portal. It works on one developer's laptop but fails in another environment because a dependency or configuration differs. Packaging the application and its dependencies into a container image helps reduce that problem.
 
-App Service supports popular application stacks such as .NET, Java, Node.js, Python, and PHP. It can also run supported custom containers.
+Containers still need a suitable host and runtime, and they still require good security and resource management.
 
-## 2. Why use App Service?
+## 2. Containers versus virtual machines
 
-App Service is useful when you want to deploy a web application or API without managing a full virtual machine.
+A virtual machine typically runs its own guest operating system on virtualized hardware. A container typically shares the host operating system's kernel through a container runtime while keeping the application environment isolated.
 
-Depending on the configuration and pricing tier, it offers capabilities such as:
+This often makes containers lighter and faster to start than full VMs. However, containers are not simply tiny virtual machines: they have a different isolation model, and their security depends on configuration and the hosting platform.
 
-- Managed hosting and platform maintenance.
-- Scaling to handle changes in demand.
-- Custom domain and TLS/SSL certificate support.
-- Deployment integrations and staging options.
-- Monitoring and diagnostic features.
+Use a VM when you need substantial control over a guest operating system. Consider containers when you want to package and deploy applications consistently, especially when an application is designed for containerization.
 
-These features do not remove the need to secure your application, configure access, manage secrets, or monitor costs. You still own your application and its configuration.
+## 3. Three important container terms
 
-## 3. App Service versus Azure Virtual Machines
+### Container image
 
-### Azure Virtual Machines
+A **container image** is the packaged template used to create a container. It contains the application and the components it needs, such as libraries and runtime dependencies.
 
-A VM gives you a virtual computer. You have more control over the guest operating system and installed software, but you also take on more responsibility for operating-system configuration, updates, and the hosting environment.
+### Container
 
-### Azure App Service
+A **container** is a running instance created from an image. One image can be used to create multiple container instances.
 
-With App Service, you deploy your web application to a managed hosting platform. Azure handles much of the underlying infrastructure and platform maintenance.
+### Container registry
 
-| Consideration | Azure Virtual Machines | Azure App Service |
-|---|---|---|
-| Infrastructure management | You manage more of the VM and OS | Azure manages more of the hosting platform |
-| Guest OS control | Greater control | More limited |
-| Typical use | Custom environments, OS-level control, varied workloads | Web applications, REST APIs, and mobile back ends |
-| Operations | More hands-on management | Less infrastructure management |
+A **container registry** stores and manages container images. **Azure Container Registry (ACR)** is Azure's managed registry service. Teams can store images there and deploy them to supported Azure container services.
 
-**Rule of thumb:** If you need detailed operating-system control, consider a VM. If you mainly need to host a web application or API and want Azure to manage more of the platform, consider App Service.
+A simple flow is:
 
-## 4. What is an App Service plan?
+1. Build an application and package it as a container image.
+2. Store the image in a registry.
+3. Deploy the image to a service that can run containers.
+4. Monitor and update the running application as needed.
 
-An **App Service plan** defines the compute resources, operating system, region, and pricing tier used to run App Service apps. Your app runs within a plan; the plan determines the capacity available to it.
+## 4. Azure services for containers
 
-Think of a plan as the hosting capacity allocated for your applications. Several apps can share the same plan and its compute resources. That can be useful, but apps sharing a plan can also compete for those resources.
+Azure has several services for running containers. Their capabilities and management models differ.
 
-Changing the plan's tier or capacity can affect cost and performance. Always choose a plan based on the workload's needs and check current Azure pricing before deploying a real service.
+### Azure Container Instances (ACI)
 
-## 5. A simple school-portal scenario
+ACI provides a straightforward way to run containers in Azure without provisioning and managing VMs. It can be useful for simple container workloads, tasks, and jobs that don't need a full orchestration platform.
 
-Suppose a school launches a portal before examination results are released. Traffic may be much higher than usual.
+### Azure Container Apps
 
-App Service can help the school scale the hosting capacity according to the selected plan and configuration. Developers can also use deployment workflows and staging options to test an update before making it live, where the selected tier supports those features.
+Azure Container Apps is a managed platform for containerized applications, APIs, background jobs, and microservices. It provides features such as scaling and application-level capabilities without requiring you to manage Kubernetes directly.
 
-Remember: App Service hosts the application. The school may still need a separate database, identity solution, storage, and monitoring services.
+### Azure Kubernetes Service (AKS)
 
-## 6. App Service versus container services
+AKS is Azure's managed Kubernetes service. Kubernetes orchestrates containers across a cluster and helps manage deployment, scaling, and operations. AKS offers considerable flexibility, but teams need more knowledge of Kubernetes and cluster operations.
 
-We have already met Azure Container Instances, Azure Container Apps, and Azure Kubernetes Service (AKS).
+### Azure Container Registry (ACR)
 
-- **App Service:** Managed hosting for web apps and APIs; supports several language stacks and custom containers.
-- **Azure Container Instances:** A straightforward way to run containers without managing VMs, often for simpler isolated workloads.
-- **Azure Container Apps:** A managed platform for containerized applications, APIs, jobs, and microservices.
-- **AKS:** Managed Kubernetes for workloads that need Kubernetes orchestration and its greater flexibility.
+ACR stores and manages container images. It is a registry, not the service that runs your container workload.
 
-These services overlap in some capabilities, so select based on the application's architecture and the amount of operational control needed.
+## 5. Choose the right concept
 
-## 7. Knowledge check
+- Need a straightforward way to run a container without managing VMs? Consider **Azure Container Instances**.
+- Need a managed platform for container apps, APIs, jobs, or microservices? Consider **Azure Container Apps**.
+- Need Kubernetes orchestration and its greater level of control? Consider **Azure Kubernetes Service**.
+- Need a private place to store container images? Consider **Azure Container Registry**.
+
+The best option depends on the workload, scaling and networking requirements, and how much operational complexity the team can manage.
+
+## 6. Knowledge check
 
 ### Question 1
+What is a container image?
 
-A school wants to host a Node.js web portal and prefers not to manage the underlying virtual machine. Which service is a strong fit?
+- A. A template used to create a running container.
+- B. A physical Azure datacentre.
+- C. An Azure subscription.
 
-- A. Azure App Service
-- B. Azure Resource Groups
-- C. Azure Availability Zones
-
-**Answer: A.** App Service is a managed platform for web applications and APIs.
+**Answer: A.** An image packages the application and its dependencies and is used to create containers.
 
 ### Question 2
+Which service stores and manages container images?
 
-Which statement best describes an App Service plan?
+- A. Azure Container Registry.
+- B. Azure Availability Zones.
+- C. Azure Resource Groups.
 
-- A. It is a place to store container images.
-- B. It defines the compute resources and pricing tier used to run App Service apps.
-- C. It is a separate physical Azure region.
-
-**Answer: B.** The plan defines the hosting resources and pricing tier for the apps that run in it.
+**Answer: A.** Azure Container Registry is Azure's managed container-image registry.
 
 ### Question 3
+A team wants to run containers without managing VMs and doesn't need a full orchestration platform. Which option is a reasonable starting point?
 
-A workload needs extensive control over the guest operating system and installed software. Which option is generally more suitable?
+- A. Azure Container Instances.
+- B. Azure Management Groups.
+- C. Azure Virtual Network Manager.
 
-- A. Azure Virtual Machines
-- B. Azure App Service
-- C. Azure Container Registry
-
-**Answer: A.** A VM offers more guest OS control than the managed App Service platform.
+**Answer: A.** ACI is designed for straightforward container execution without provisioning VMs.
 
 ### Question 4
+Which service provides managed Kubernetes in Azure?
 
-True or false: Using App Service means the developer no longer needs to secure the application or monitor its costs.
+- A. Azure Container Registry.
+- B. Azure Kubernetes Service.
+- C. Azure Container Instances.
 
-**Answer: False.** Azure manages much of the hosting platform, but customers remain responsible for their application, configuration, access, data, and cost management.
+**Answer: B.** AKS is Azure's managed Kubernetes service.
 
-## 8. Key takeaways
+## 7. Key takeaways
 
-- Azure App Service is a managed PaaS offering for web applications, REST APIs, and mobile back ends.
-- It supports popular stacks including .NET, Java, Node.js, Python, and PHP, as well as supported custom containers.
-- Compared with a VM, App Service reduces the amount of underlying infrastructure you need to manage.
-- An App Service plan defines the compute resources and pricing tier used to run apps.
-- App Service does not eliminate the need to secure your application, manage configuration, and monitor spending.
-- VMs are generally more suitable when you need greater guest OS control.
+- Containers package applications and their dependencies for consistent deployment.
+- A container image is the template; a container is a running instance of that image.
+- Containers typically share the host operating system's kernel, while a VM usually runs its own guest operating system.
+- Azure Container Instances runs containers without requiring you to manage VMs.
+- Azure Container Apps is a managed platform for containerized apps, jobs, and microservices.
+- AKS provides managed Kubernetes orchestration.
+- Azure Container Registry stores and manages container images.
 
-## 9. Official Microsoft Learn references
+## 8. Official Microsoft Learn references
 
-- [Azure App Service overview](https://learn.microsoft.com/en-us/azure/app-service/app-service-web-overview)
-- [Azure App Service plans](https://learn.microsoft.com/en-us/azure/app-service/overview-hosting-plans)
-- [Get started with Azure App Service](https://learn.microsoft.com/en-us/azure/app-service/getting-started)
-- [Choose how to host applications on Azure](https://learn.microsoft.com/en-us/azure/developer/intro/hosting-apps-on-azure)
+- [Azure Container Instances overview](https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview)
+- [Azure Container Apps overview](https://learn.microsoft.com/en-us/azure/container-apps/overview)
+- [Azure Kubernetes Service documentation](https://learn.microsoft.com/en-us/azure/aks/)
+- [Azure Container Registry documentation](https://learn.microsoft.com/en-us/azure/container-registry/)
 
 ---
 
