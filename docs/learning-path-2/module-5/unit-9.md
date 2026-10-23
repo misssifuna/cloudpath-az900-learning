@@ -48,35 +48,12 @@ Good practices include:
 
 Key Vault is not a general-purpose database for all application content. Its purpose is to protect and manage sensitive keys, secrets, and certificates.
 
-## 5. Keys, secrets, and certificates
-
-These terms are related but different:
-
-- **Cryptographic key:** used by cryptographic operations, such as encrypting or decrypting data or creating/verifying signatures.
-- **Secret:** sensitive information such as an API key, password, or connection string.
-- **Certificate:** a digital credential that associates an identity with a public key and is commonly used with TLS.
-
-Avoid placing credentials directly in source code or committing them to GitHub. If a secret is exposed, remove the exposure and rotate or revoke the credential as appropriate; deleting the visible line alone may not remove it from the repository's history.
-
-## 6. Azure Key Vault
-
-**Azure Key Vault** helps securely store and control access to secrets, cryptographic keys, and certificates.
-
-For example, a GeekHub application may need a database connection secret. Rather than hard-coding that secret into the application source, the application can retrieve it from a suitably configured vault using an appropriate identity and permissions.
-
-Good practices include:
-- Restricting access using least privilege.
-- Controlling network access where appropriate.
-- Monitoring access and configuration.
-- Rotating credentials and keys according to the organization's needs.
-- Protecting recovery settings against accidental or malicious deletion.
-
-Key Vault is not a general-purpose database for all application content. Its purpose is to protect and manage sensitive keys, secrets, and certificates.
-
 ## Quick knowledge check
+
 **What is the purpose of encryption?**
 
 **Answer:** It makes data unreadable without the appropriate decryption capability, helping protect data at rest or in transit.
 
 ## Official learning resource
+
 [Describe Azure identity, access, and security — Microsoft Learn](https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security/)
