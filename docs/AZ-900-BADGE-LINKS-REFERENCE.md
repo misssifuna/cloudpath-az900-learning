@@ -14,7 +14,7 @@ Use this as a working syllabus reference. If a unit title appears misplaced or d
 5. Define cloud models
 6. Describe the consumption-based model
 
-**Source note:** The original notes list both “Introduction to cloud computing” and “What is cloud computing?” as separate units. Keep this six-unit source structure in this reference; the learning app may consolidate overlapping material only after checking the official source.
+**Source note:** The original notes list both “Introduction to cloud computing” and “What is cloud computing?” as separate units. The CloudPath course intentionally consolidates those overlapping topics into one lesson, reducing this module from six to five app units. The source reference retains the original six entries for traceability; the five-unit app mapping is documented in `learning-path-1/README.md`.
 
 ### Module 2: Describe the benefits of using cloud services
 1. Introduction
