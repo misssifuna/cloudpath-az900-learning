@@ -1,4 +1,4 @@
-# Learning Path 2 · Module 1 · Unit 2: What is Microsoft Azure?
+# Learning Path 2 — Module 1, Unit 2: What is Microsoft Azure?
 
 **Learning path:** Introduction to Cloud Infrastructure: Describe Azure architecture and services  
 **Purpose:** Explain what Azure is and recognise the broad categories of services it provides.  
