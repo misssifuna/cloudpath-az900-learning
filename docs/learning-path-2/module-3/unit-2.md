@@ -1,112 +1,138 @@
-# Learning Path 2 — Module 3, Unit 2: Azure DNS, VPN Gateway, and ExpressRoute
+# Learning Path 2 — Module 3, Unit 2: Azure Virtual Networks and Subnets
 
 ## Learning goals
 
 By the end of this lesson, you should be able to:
-- Explain what DNS does and what Azure DNS provides.
-- Distinguish Azure public DNS from Azure Private DNS at a basic level.
-- Explain how Azure VPN Gateway supports encrypted connectivity.
-- Distinguish site-to-site and point-to-site VPN connections.
-- Compare VPN Gateway with ExpressRoute.
+- Explain what an Azure virtual network (VNet) does.
+- Distinguish a VNet from a subnet.
+- Explain private and public IP addresses at a basic level.
+- Recognize why address ranges should not overlap when networks need to connect.
+- Explain how network security groups (NSGs) help control traffic.
 
-## 1. Azure DNS: finding services by name
+## 1. Why does Azure need networks?
 
-Imagine a school has a portal at a memorable domain name. People use names more easily than numerical IP addresses. The Domain Name System (DNS) resolves a domain name to the records needed to locate a service.
+Imagine GeekHub builds a school portal in Azure. The portal may have a web front end, application logic, and a database. These components need to communicate, but the school should not expose every component to the public internet.
 
-**Azure DNS** lets organizations host and manage DNS domains and records using Azure infrastructure. It provides DNS hosting and resolution; it does not itself host your website or supply the network path to it.
+A network gives resources a way to communicate and gives administrators a place to plan and control that communication.
 
-Azure DNS capabilities include:
+## 2. What is an Azure virtual network (VNet)?
 
-- **Azure Public DNS:** hosts DNS zones for publicly resolvable domain names.
-- **Azure Private DNS:** manages and resolves DNS names for private resources in virtual networks.
-- **Azure DNS Private Resolver:** enables DNS queries between Azure and on-premises environments without requiring you to deploy your own DNS server virtual machines for that purpose.
+An **Azure virtual network (VNet)** is a logically isolated private network in Azure. Think of it as the school's private digital campus.
 
-**Remember:** DNS resolves names; it is not the website itself.
+A VNet:
+- provides a network space for supported Azure resources to communicate;
+- has an IP address space that you choose;
+- can be divided into subnets;
+- can be connected to other networks when needed.
 
-## 2. Azure VPN Gateway: an encrypted connection
+Resources in the same VNet can generally communicate using private IP addresses, subject to their configuration and security rules. Separate VNets are isolated by default; you need an explicit connection, such as VNet peering or a VPN, for them to communicate privately.
 
-A school may keep some systems in its physical office while hosting other services in Azure. Its office network needs a secure way to connect to its Azure virtual network.
+**Remember:** a VNet is a software-defined network, not one physical cable or one physical data centre.
 
-**Azure VPN Gateway** establishes VPN connections that use encryption over the public internet. It can connect on-premises networks to Azure VNets and can support connections between VNets.
+## 3. What is a subnet?
 
-Two common connection types:
+A **subnet** is a smaller range of IP addresses inside a VNet. Subnets help organize resources by purpose and make it easier to apply network rules.
 
-- **Site-to-site VPN:** connects an on-premises network to an Azure VNet.
-- **Point-to-site VPN:** connects an individual device, such as an authorized employee's laptop, to an Azure VNet.
+For our school portal, the network might be arranged like this:
 
-A VPN can be a cost-effective way to provide encrypted connectivity. However, VPN traffic still traverses the public internet. Encryption protects the traffic; it does not mean the public internet is no longer involved.
+```text
+School-Portal-VNet
+├── Web subnet       → web-facing components
+├── App subnet       → application logic
+└── Data subnet      → database-related components
+```
 
-## 3. Azure ExpressRoute: private connectivity
+This is a conceptual example, not a deployment blueprint. The exact Azure services and subnet requirements depend on the design.
 
-**Azure ExpressRoute** extends an on-premises network into the Microsoft cloud through a private connection facilitated by a connectivity provider. Its traffic does not traverse the public internet.
+The important distinction:
+- **VNet:** the whole private network.
+- **Subnet:** one segment within that network.
 
-Organizations may consider ExpressRoute when they require private connectivity, high-capacity data transfer, or predictable network performance for important workloads. It generally involves additional cost and provider setup compared with a VPN.
+Subnets do not automatically block all traffic from one another. If you need to restrict communication, configure appropriate controls such as network security groups.
 
-## 4. VPN Gateway versus ExpressRoute
+## 4. IP addresses: private versus public
 
-| Feature | VPN Gateway | ExpressRoute |
-|---|---|---|
-| Connection | Encrypted VPN over the public internet | Private provider-facilitated connection |
-| Does traffic traverse the public internet? | Yes | No |
-| Typical consideration | Cost-effective encrypted connectivity | Private connectivity for demanding workloads |
-| Setup | Often quicker | Provider circuit may take longer |
-| Example | A school securely connects its office to Azure | A large institution privately connects its data centre to Azure |
+An **IP address** identifies a network interface so that traffic can be directed to it.
 
-### AZ-900 exam tip
+- **Private IP address:** used for communication within a private network or connected networks. It is not directly reachable from the public internet just because it exists.
+- **Public IP address:** can provide an internet-reachable address when associated with a supported Azure resource and configured appropriately. A public IP does not mean every port or service is automatically open; security and service configuration still matter.
 
-- If a scenario emphasizes an **encrypted connection over the public internet**, consider **VPN Gateway**.
-- If it emphasizes a **private connection that does not traverse the public internet**, consider **ExpressRoute**.
+A public-facing website might accept internet traffic through a public endpoint, while its database is reachable only through private networking.
 
-Choose based on the stated requirements; neither service is automatically the best choice for every organization.
+## 5. Address spaces and overlap
 
-## 5. Putting the services together
+When you create a VNet, you choose an address space. Subnets receive smaller address ranges from that space.
 
-For a school modernizing its IT:
+For example, imagine a VNet using the private range `10.20.0.0/16`, with separate smaller ranges for web, app, and data subnets. The exact CIDR notation is beyond what you need to calculate for this introductory AZ-900 lesson.
 
-- **Azure DNS** manages domain-name resolution for the portal.
-- An IT administrator can use a **point-to-site VPN** to connect an authorized laptop to the Azure network.
-- The school could evaluate **ExpressRoute** if it later needs a private provider-facilitated connection from its campus network to Azure.
+**Key rule:** subnets inside the same VNet must use non-overlapping address ranges. When connecting VNets or connecting Azure to an on-premises network, plan non-overlapping ranges so that routing can distinguish the networks correctly.
 
-These services solve different problems: name resolution, encrypted connectivity, and private connectivity.
+## 6. Network security groups (NSGs)
+
+A **network security group (NSG)** contains rules that allow or deny network traffic. It can be associated with a subnet or a network interface.
+
+Think of an NSG as a set of digital access rules:
+- allow web traffic to the web tier when required;
+- allow the application tier to reach the database on the required port;
+- block traffic that should not be permitted.
+
+An NSG is not the same thing as a VNet or subnet. The VNet provides the network, the subnet organizes the address space, and the NSG filters traffic. Good security depends on configuring rules appropriately.
+
+## 7. VNet peering: connecting virtual networks
+
+**VNet peering** privately connects two Azure virtual networks, including VNets in different Azure regions. Traffic can travel over Microsoft's backbone network.
+
+Peering does **not** merge the two VNets into one. It creates a connection between them. Peering is not automatically transitive: if VNet A peers with VNet B, and VNet B peers with VNet C, that alone does not mean A can communicate with C through B.
+
+## Exam-ready comparison
+
+| Term | Meaning |
+|---|---|
+| Virtual network (VNet) | An isolated private network in Azure |
+| Subnet | A smaller IP address range within a VNet |
+| Private IP | An address for private network communication |
+| Public IP | An address that can support internet-facing connectivity when configured |
+| NSG | Rules that allow or deny network traffic |
+| VNet peering | A private connection between two VNets |
 
 ## Quick knowledge check
 
-1. Which service manages DNS zones and records in Azure?
-   - A. Azure DNS
-   - B. Azure VPN Gateway
-   - C. ExpressRoute
+Try answering before looking at the explanations.
 
-2. An IT administrator needs to connect an individual laptop securely to an Azure VNet. Which VPN connection type fits?
-   - A. Site-to-site
-   - B. Point-to-site
-   - C. ExpressRoute
+1. A school wants to separate its web tier and database tier into different network segments. What should it create inside its VNet?
+   - A. Two subscriptions
+   - B. Two subnets
+   - C. Two availability zones
 
-3. Which statement about a typical Azure VPN Gateway connection is correct?
-   - A. It uses an encrypted VPN connection over the public internet.
-   - B. Its traffic never traverses the public internet.
-   - C. It translates every domain name into a website.
+2. What is the main purpose of a VNet?
+   - A. To provide a logically isolated network for Azure resources
+   - B. To automatically back up every database
+   - C. To replace all identity and access controls
 
-4. An organization requires a private connection to Microsoft cloud that does not traverse the public internet. Which service is the best match?
-   - A. Azure DNS
-   - B. VPN Gateway
-   - C. ExpressRoute
+3. A team needs to control which network traffic can reach a subnet. Which service is most directly relevant?
+   - A. Azure Cost Management
+   - B. Network security group (NSG)
+   - C. Azure Advisor
+
+4. Two VNets are peered. Does that mean they have become one VNet, or that peering is automatically transitive to every other connected VNet?
+   - A. Yes, both are true
+   - B. No; peering connects the VNets but does not merge them and is not automatically transitive
 
 ### Answers and explanations
 
-1. **A — Azure DNS.** It hosts and manages DNS zones and records.
-2. **B — Point-to-site.** This connects an individual device to an Azure VNet.
-3. **A — Encrypted VPN over the public internet.** Encryption does not remove the public internet from the route.
-4. **C — ExpressRoute.** It provides private connectivity through a connectivity provider, without traffic traversing the public internet.
+1. **B — Two subnets.** Subnets divide a VNet's address space into smaller segments for organization and traffic-control planning.
+2. **A — A logically isolated network.** A VNet provides private network connectivity for supported resources.
+3. **B — NSG.** NSGs use rules to allow or deny traffic to and from subnets or network interfaces.
+4. **B — No.** Peering creates a private connection between the two VNets. It does not merge them, and peering through an intermediate VNet is not automatically transitive.
 
 ## Key takeaway
 
-**Azure DNS = names; VPN Gateway = encrypted VPN connectivity over the internet; ExpressRoute = private connectivity that does not traverse the public internet.**
+**VNet = the private network; subnet = a segment within it; NSG = traffic rules; peering = a private connection between VNets.**
 
 ## Official Microsoft Learn references
 
-- [Azure DNS documentation](https://learn.microsoft.com/en-us/azure/dns/)
-- [Azure networking services overview](https://learn.microsoft.com/en-us/azure/networking/fundamentals/networking-overview)
-- [Compare VPN Gateway and ExpressRoute](https://learn.microsoft.com/en-us/azure/networking/hybrid-connectivity/hybrid-connectivity)
-- [Describe Azure networking services — AZ-900 learning module](https://learn.microsoft.com/en-us/training/modules/describe-azure-networking-services/)
+- [Virtual networks and virtual machines in Azure](https://learn.microsoft.com/en-us/azure/virtual-network/network-overview)
+- [Azure virtual networks and subnets](https://learn.microsoft.com/en-us/azure/networking/design-guide/vnets-subnets)
+- [Plan Azure virtual networks](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg)
 
-These are original study notes for AZ-900 preparation, not official exam questions or a substitute for the current Microsoft Learn study guide.
+These notes are an original study aid for AZ-900 preparation, not official exam questions or a substitute for the current Microsoft Learn study guide.
