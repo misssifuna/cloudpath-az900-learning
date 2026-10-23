@@ -1,138 +1,146 @@
-# Learning Path 2 — Module 2, Unit 3: Azure containers
+# Learning Path 2 — Module 2, Unit 3: Azure Virtual Desktop
 
 **Learning path:** Introduction to Cloud Infrastructure — Describe Azure architecture and services  
 **Module 2:** Describe Azure compute services  
-**Unit:** Azure containers
+**Unit:** Describe Azure Virtual Desktop
 
 ## Learning objectives
 
 By the end of this unit, you should be able to:
 
-- Explain what containers are and why developers use them.
-- Distinguish a container image from a running container.
-- Compare containers with virtual machines at a high level.
-- Recognize Azure Container Instances, Azure Container Apps, Azure Kubernetes Service, and Azure Container Registry.
+- Explain the purpose of Azure Virtual Desktop (AVD).
+- Distinguish Azure Virtual Desktop from an individual virtual machine.
+- Recognize host pools, session hosts, and RemoteApp.
+- Understand personal and pooled desktop options at a high level.
 
-## 1. What is a container?
+## 1. What is Azure Virtual Desktop?
 
-A **container** is an isolated environment for running an application. It packages the application and its dependencies so it can run consistently across compatible environments.
+Azure Virtual Desktop is a desktop and application virtualization service that runs on Azure. It lets users remotely access a Windows desktop experience or individual published applications from supported devices and clients.
 
-Imagine GeekHub develops a student portal. It works on one developer's laptop but fails in another environment because a dependency or configuration differs. Packaging the application and its dependencies into a container image helps reduce that problem.
+Imagine GeekHub has a remote team member who needs a managed Windows desktop with approved business applications. Instead of relying entirely on the person's physical computer, the organization can provide a hosted desktop environment that the person accesses remotely.
 
-Containers still need a suitable host and runtime, and they still require good security and resource management.
+The desktop environment runs on Azure-hosted infrastructure, while the user connects from their own device. This is different from simply opening a website or using a browser-based SaaS application: AVD delivers a remote desktop experience or specific remote applications.
 
-## 2. Containers versus virtual machines
+## 2. Key Azure Virtual Desktop terms
 
-A virtual machine typically runs its own guest operating system on virtualized hardware. A container typically shares the host operating system's kernel through a container runtime while keeping the application environment isolated.
+### Host pool
 
-This often makes containers lighter and faster to start than full VMs. However, containers are not simply tiny virtual machines: they have a different isolation model, and their security depends on configuration and the hosting platform.
+A host pool is a group of session-host virtual machines that provides desktops or applications to users.
 
-Use a VM when you need substantial control over a guest operating system. Consider containers when you want to package and deploy applications consistently, especially when an application is designed for containerization.
+### Session host
 
-## 3. Three important container terms
+A session host is a virtual machine where a user's remote desktop or application session runs.
 
-### Container image
+### RemoteApp
 
-A **container image** is the packaged template used to create a container. It contains the application and the components it needs, such as libraries and runtime dependencies.
+RemoteApp lets an organization publish individual applications rather than providing the entire desktop to every user.
 
-### Container
+### Workspace and application group
 
-A **container** is a running instance created from an image. One image can be used to create multiple container instances.
+At a high level, application groups define the desktops or applications users can access, and a workspace is the logical place where those published resources are presented to users.
 
-### Container registry
+## 3. Personal versus pooled desktops
 
-A **container registry** stores and manages container images. **Azure Container Registry (ACR)** is Azure's managed registry service. Teams can store images there and deploy them to supported Azure container services.
+### Personal desktop
 
-A simple flow is:
+A user is assigned a dedicated desktop environment. This can be useful when a person needs a more individually owned desktop experience.
 
-1. Build an application and package it as a container image.
-2. Store the image in a registry.
-3. Deploy the image to a service that can run containers.
-4. Monitor and update the running application as needed.
+### Pooled desktop
 
-## 4. Azure services for containers
+Multiple users share a pool of session-host resources, with sessions assigned according to the pool's configuration. Pooling can improve resource utilization when users do not all need dedicated VMs.
 
-Azure has several services for running containers. Their capabilities and management models differ.
+The best choice depends on user needs, application requirements, performance, management, and cost.
 
-### Azure Container Instances (ACI)
+## 4. Azure Virtual Desktop versus Azure Virtual Machines
 
-ACI provides a straightforward way to run containers in Azure without provisioning and managing VMs. It can be useful for simple container workloads, tasks, and jobs that don't need a full orchestration platform.
+Azure Virtual Machines provide virtual computers for many kinds of workloads, such as hosting websites, databases, or custom software.
 
-### Azure Container Apps
+Azure Virtual Desktop is a service for delivering remote Windows desktops and applications. It uses session-host virtual machines, but also provides the service components that manage desktop access and delivery.
 
-Azure Container Apps is a managed platform for containerized applications, APIs, background jobs, and microservices. It provides features such as scaling and application-level capabilities without requiring you to manage Kubernetes directly.
+| Azure Virtual Machines | Azure Virtual Desktop |
+|---|---|
+| Provides virtual computers for many workload types | Delivers remote desktops and applications |
+| A VM can host a website, database, or other workload | Session-host VMs run users' desktop or application sessions |
+| You manage the VM's operating environment | Azure manages much of the desktop-delivery infrastructure, but you still manage session hosts, images, access, and configuration |
 
-### Azure Kubernetes Service (AKS)
+**Important:** Azure Virtual Desktop uses virtual machines, but an individual VM is not the same as a complete virtual desktop service.
 
-AKS is Azure's managed Kubernetes service. Kubernetes orchestrates containers across a cluster and helps manage deployment, scaling, and operations. AKS offers considerable flexibility, but teams need more knowledge of Kubernetes and cluster operations.
+## 5. When is Azure Virtual Desktop useful?
 
-### Azure Container Registry (ACR)
+Possible scenarios include:
 
-ACR stores and manages container images. It is a registry, not the service that runs your container workload.
+- Providing remote staff with access to a managed Windows desktop.
+- Delivering business applications to users on different supported devices.
+- Supporting temporary or distributed workforces.
+- Using pooled desktops when a dedicated VM for every user is unnecessary.
+- Publishing selected applications without providing a full desktop.
 
-## 5. Choose the right concept
-
-- Need a straightforward way to run a container without managing VMs? Consider **Azure Container Instances**.
-- Need a managed platform for container apps, APIs, jobs, or microservices? Consider **Azure Container Apps**.
-- Need Kubernetes orchestration and its greater level of control? Consider **Azure Kubernetes Service**.
-- Need a private place to store container images? Consider **Azure Container Registry**.
-
-The best option depends on the workload, scaling and networking requirements, and how much operational complexity the team can manage.
+AVD is not automatically the cheapest or simplest choice for every user. Organizations need to consider licensing, session-host compute, storage, networking, security, and ongoing administration.
 
 ## 6. Knowledge check
 
 ### Question 1
-What is a container image?
 
-- A. A template used to create a running container.
-- B. A physical Azure datacentre.
-- C. An Azure subscription.
+What is the primary purpose of Azure Virtual Desktop?
 
-**Answer: A.** An image packages the application and its dependencies and is used to create containers.
+- A. To deliver remote Windows desktops and applications.
+- B. To store container images.
+- C. To manage Azure subscriptions only.
+
+**Answer: A.** AVD is a desktop and application virtualization service.
 
 ### Question 2
-Which service stores and manages container images?
 
-- A. Azure Container Registry.
-- B. Azure Availability Zones.
-- C. Azure Resource Groups.
+In Azure Virtual Desktop, what is a session host?
 
-**Answer: A.** Azure Container Registry is Azure's managed container-image registry.
+- A. A physical Azure region.
+- B. A virtual machine where users' remote desktop or application sessions run.
+- C. A container registry.
+
+**Answer: B.** Session hosts run the desktop or application sessions.
 
 ### Question 3
-A team wants to run containers without managing VMs and doesn't need a full orchestration platform. Which option is a reasonable starting point?
 
-- A. Azure Container Instances.
-- B. Azure Management Groups.
-- C. Azure Virtual Network Manager.
+What is RemoteApp used for?
 
-**Answer: A.** ACI is designed for straightforward container execution without provisioning VMs.
+- A. Publishing individual applications remotely.
+- B. Creating an Azure subscription.
+- C. Replicating a datacentre.
+
+**Answer: A.** RemoteApp can deliver individual applications rather than a complete desktop.
 
 ### Question 4
-Which service provides managed Kubernetes in Azure?
 
-- A. Azure Container Registry.
-- B. Azure Kubernetes Service.
-- C. Azure Container Instances.
+True or false: Azure Virtual Desktop and an individual Azure virtual machine mean exactly the same thing.
 
-**Answer: B.** AKS is Azure's managed Kubernetes service.
+**Answer: False.** AVD is a service for delivering remote desktops and applications, and it uses VMs as session hosts.
+
+### Question 5
+
+What is one potential advantage of pooled desktops?
+
+- A. Every user must have a separate physical computer.
+- B. Multiple users can share a pool of session-host resources, potentially improving resource utilization.
+- C. No licensing or compute costs apply.
+
+**Answer: B.** Pooling can improve resource utilization, though costs and licensing still apply.
 
 ## 7. Key takeaways
 
-- Containers package applications and their dependencies for consistent deployment.
-- A container image is the template; a container is a running instance of that image.
-- Containers typically share the host operating system's kernel, while a VM usually runs its own guest operating system.
-- Azure Container Instances runs containers without requiring you to manage VMs.
-- Azure Container Apps is a managed platform for containerized apps, jobs, and microservices.
-- AKS provides managed Kubernetes orchestration.
-- Azure Container Registry stores and manages container images.
+- Azure Virtual Desktop delivers remote Windows desktops and applications.
+- A host pool groups session hosts.
+- A session host is a VM where a user's remote session runs.
+- RemoteApp can publish individual applications rather than a full desktop.
+- Personal desktops provide dedicated environments; pooled desktops share host resources.
+- AVD is more than a VM: it is the service for delivering and managing desktop and application access.
+- Organizations still need to plan access, security, licensing, session-host resources, and costs.
 
 ## 8. Official Microsoft Learn references
 
-- [Azure Container Instances overview](https://learn.microsoft.com/en-us/azure/container-instances/container-instances-overview)
-- [Azure Container Apps overview](https://learn.microsoft.com/en-us/azure/container-apps/overview)
-- [Azure Kubernetes Service documentation](https://learn.microsoft.com/en-us/azure/aks/)
-- [Azure Container Registry documentation](https://learn.microsoft.com/en-us/azure/container-registry/)
+- [What is Azure Virtual Desktop?](https://learn.microsoft.com/en-us/azure/virtual-desktop/overview)
+- [Azure Virtual Desktop documentation](https://learn.microsoft.com/en-us/azure/virtual-desktop/)
+- [Azure Virtual Desktop terminology](https://learn.microsoft.com/en-us/azure/virtual-desktop/environment-setup)
+- [Windows multi-session FAQ](https://learn.microsoft.com/en-us/azure/virtual-desktop/windows-multisession-faq)
 
 ---
 
