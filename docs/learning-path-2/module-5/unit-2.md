@@ -1,4 +1,4 @@
-# Unit 13: Zero Trust, Defense in Depth, Encryption, and Defender for Cloud
+# Learning Path 2 — Module 5, Unit 2: Zero Trust, Defense in Depth, Encryption, and Defender for Cloud
 
 **Learning Path 2 — Azure architecture and services**  
 **Module 5 — Identity, access, and security**  
