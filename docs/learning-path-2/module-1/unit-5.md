@@ -1,4 +1,4 @@
-# Unit 5: Describe Azure management infrastructure
+# Learning Path 2 — Module 1, Unit 5: Describe Azure management infrastructure
 
 **Learning path:** Introduction to Cloud Infrastructure — Describe Azure architecture and services  
 **Module 1:** Describe the core architectural components of Azure  
