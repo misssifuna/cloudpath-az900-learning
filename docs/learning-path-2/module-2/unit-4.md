@@ -1,4 +1,4 @@
-# Unit 4: Azure App Service
+# Learning Path 2 — Module 2, Unit 4: Azure App Service
 
 **Learning path:** Introduction to Cloud Infrastructure — Describe Azure architecture and services  
 **Module 2:** Describe Azure compute services  
