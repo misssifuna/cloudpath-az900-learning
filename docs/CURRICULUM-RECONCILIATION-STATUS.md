@@ -42,7 +42,7 @@ Counting each listed syllabus unit as one, except for the intentional consolidat
 
 1. Reconcile the **61/62 versus 67** unit-count discrepancy with the intended app counting convention.
 2. Review each split lesson for accuracy and ensure the extraction has not left duplicated or missing material.
-3. Check all internal links and update any app curriculum data or prototype configuration to use the same canonical order as the Markdown indexes.
+3. Markdown links in the root README, all three learning-path indexes, and this status document have been checked; no broken internal links were found. The app/prototype curriculum data still needs to be compared with these canonical Markdown indexes.
 4. Recheck service names and exam coverage against the current Microsoft Learn study guide before release.
 
 The unit indexes describe the intended learner-facing sequence. This status file deliberately does not claim that every lesson has completed a technical review.
