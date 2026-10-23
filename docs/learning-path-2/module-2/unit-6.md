@@ -1,4 +1,4 @@
-# Unit 6: Azure Virtual Desktop
+# Learning Path 2 — Module 2, Unit 6: Azure Virtual Desktop
 
 **Learning path:** Introduction to Cloud Infrastructure — Describe Azure architecture and services  
 **Module 2:** Describe Azure compute services  
