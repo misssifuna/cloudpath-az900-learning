@@ -20,6 +20,11 @@ The authored learning content consolidates the overlapping “Introduction to cl
 | 4 | Define cloud models | [Read Unit 4](docs/learning-path-1/module-1/unit-4.md) |
 | 5 | Describe the consumption-based model | [Read Unit 5 and practical Azure lab](docs/learning-path-1/module-1/unit-5.md) |
 
+## Learning paths
+- [Learning Path 1 — Describe cloud concepts](docs/learning-path-1/README.md)
+- [Learning Path 2 — Describe Azure architecture and services](docs/learning-path-2/README.md)
+- [Learning Path 3 — Describe Azure management and governance](docs/learning-path-3/README.md)
+
 ## Revision resources
 - [Unit 1 flashcards](docs/learning-path-1/module-1/flashcards-unit-1.md)
 - [Flashcards for Units 2–5](docs/learning-path-1/module-1/flashcards-units-2-5.md)
@@ -37,4 +42,4 @@ The authored learning content consolidates the overlapping “Introduction to cl
 Use the [Microsoft Azure Fundamentals certification page and current skills outline](https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/) as the source of truth for exam scope.
 
 ## Project status
-This repository contains five Module 1 lesson drafts, flashcards, a practice question bank, and a practical subscription/cost exploration lab. The interactive web experience and persistent learner progress are separate implementation tasks.
+The repository now includes reference-aligned lesson sequences for all three learning paths, with Module 1 of Learning Path 1 intentionally reduced to five app units. Original combined notes and supplementary AZ-900 topics are preserved where lessons were split. The curriculum unit-count discrepancy and remaining content-verification tasks are tracked in `docs/CURRICULUM-RECONCILIATION-STATUS.md`. The interactive web experience and persistent learner progress are separate implementation tasks.
