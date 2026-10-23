@@ -27,7 +27,7 @@ The module and unit numbering here follows the supplied Badge Links notes. Micro
 | 3 | Describe Azure virtual desktop | [Aligned lesson](module-2/unit-3.md) |
 | 4 | Describe Azure containers | [Aligned lesson](module-2/unit-4.md) |
 | 5 | Describe Azure functions | [Existing lesson](module-2/unit-5.md) |
-| 6 | Describe AI, machine learning, and IoT/Edge services in Azure | [New dedicated lesson](module-2/unit-6-ai-machine-learning-iot-edge.md) |
+| 6 | Describe AI, machine learning, and IoT/Edge services in Azure | [Dedicated lesson](module-2/unit-6.md) |
 | 7 | Describe application hosting options | [Aligned lesson](module-2/unit-7.md), expanded beyond App Service |
 
 The former Unit 7 lesson on Virtual Machine Scale Sets and Availability Sets has been preserved as [supplementary content](supplementary/virtual-machine-scale-sets-and-availability-sets.md). The old `unit-6.md` path is now a pointer to the canonical Virtual Desktop Unit 3 lesson, to reduce confusion from the previous numbering.
@@ -81,4 +81,4 @@ The combined original storage, identity, security, and networking notes have bee
 5. Verify the questionable “Create, configure, and manage users” entry against current Microsoft Learn before assigning it to a module.
 6. Audit all lesson content against the [official AZ-900 study guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900), which is the authority for current exam objectives.
 
-**Current status:** Module 2 has now been aligned to the reference order for Virtual Desktop (Unit 3), Containers (Unit 4), AI/ML/IoT/Edge (Unit 6), and application hosting (Unit 7). The VM Scale Sets and Availability Sets material is preserved as supplementary content. Other modules still need the same careful unit-by-unit split and alignment; do not treat this path as fully reconciled yet.
+**Current status:** All five modules now have reference-aligned unit files or dedicated pointers. The compute sequence has a dedicated AI/ML/IoT/Edge lesson; networking, storage, and identity/security combined notes have been split into dedicated units. The suspicious networking title was checked against current Microsoft Learn and documented as a source discrepancy. Original combined lessons and extra AZ-900 topics are preserved in `supplementary/`. Continue the content audit before marking every objective complete.
