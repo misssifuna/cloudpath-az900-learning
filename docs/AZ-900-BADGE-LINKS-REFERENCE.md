@@ -55,7 +55,7 @@ Use this as a working syllabus reference. If a unit title appears misplaced or d
 4. Describe Azure ExpressRoute
 5. Describe Azure DNS
 
-**Verification flag:** “Create, configure, and manage users” appears under networking in the supplied notes, but may belong to another topic. Verify this unit's placement and title against the current Microsoft Learn source before treating it as a networking objective.
+**Verified discrepancy:** The supplied notes say “Create, configure, and manage users” under networking. The current [Microsoft Learn networking module](https://learn.microsoft.com/en-us/training/modules/describe-azure-networking/) instead lists “Describe Azure virtual networking” as Unit 2. CloudPath uses the verified networking topic in its lesson sequence and preserves this source discrepancy here for traceability; it does not teach user administration as a networking objective.
 
 ### Module 4: Describe Azure storage services
 1. Introduction
