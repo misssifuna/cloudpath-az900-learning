@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "cloudpath-az900-prototype.zip"
+      - "demo.html"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -30,11 +31,12 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Prepare approved prototype
+      - name: Prepare approved prototype and demo page
         run: |
           mkdir -p site
           unzip -q cloudpath-az900-prototype.zip -d extracted
           cp extracted/cloudpath-az900-prototype/index.html site/index.html
+          cp demo.html site/demo.html
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
