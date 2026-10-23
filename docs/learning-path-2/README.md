@@ -36,39 +36,41 @@ The former Unit 7 lesson on Virtual Machine Scale Sets and Availability Sets has
 
 | Unit | Reference title | Current lesson / status |
 |---|---|---|
-| 1 | Introduction | **Missing dedicated introduction** |
-| 2 | Create, configure, and manage users | **Placement/title needs verification**; this appears under networking in the supplied notes but may belong to another topic |
-| 3 | Describe Azure virtual private networks | [VNet and subnet lesson](module-3/unit-1.md) is relevant but needs remapping and title review |
-| 4 | Describe Azure ExpressRoute | [Covered in the combined DNS/VPN/ExpressRoute lesson](module-3/unit-2.md); create a dedicated unit or split the lesson |
-| 5 | Describe Azure DNS | [Covered in the combined DNS/VPN/ExpressRoute lesson](module-3/unit-2.md); create a dedicated unit or split the lesson |
+| 1 | Introduction | [Dedicated introduction](module-3/unit-1.md) |
+| 2 | Create, configure, and manage users | **Source discrepancy:** CloudPath uses [Describe Azure virtual networking](module-3/unit-2.md), matching current Microsoft Learn. See the [reference note](../AZ-900-BADGE-LINKS-REFERENCE.md). |
+| 3 | Describe Azure virtual private networks | [Dedicated VPN lesson](module-3/unit-3.md) |
+| 4 | Describe Azure ExpressRoute | [Dedicated lesson](module-3/unit-4.md) |
+| 5 | Describe Azure DNS | [Dedicated lesson](module-3/unit-5.md) |
 
-The existing [Public and Private Endpoints lesson](module-3/unit-3.md) is useful for current AZ-900 scope, but it is not one of the five units in the Badge Links reference. Keep it as supplementary content or map it to a verified current objective without changing the reference list.
+The existing Public and Private Endpoints topic has been preserved as [supplementary content](supplementary/public-private-endpoints.md).
 
 ## Module 4 — Describe Azure storage services
 
 | Unit | Reference title | Current lesson / status |
 |---|---|---|
-| 1 | Introduction | **Missing dedicated introduction** |
-| 2 | Describe Azure storage accounts | Covered within [the combined storage lesson](module-4/unit-1.md); split into its own lesson |
-| 3 | Describe Azure storage redundancy | Covered within [the combined storage lesson](module-4/unit-1.md); split into its own lesson |
-| 4 | Describe Azure storage services | Covered within [the combined storage lesson](module-4/unit-1.md); split into its own lesson |
-| 5 | Identify Azure data migration options | Covered within [the combined storage lesson](module-4/unit-1.md); split into its own lesson |
-| 6 | Identify Azure file movement options | Covered within [the combined storage lesson](module-4/unit-1.md); split into its own lesson |
+| 1 | Introduction | [Dedicated introduction](module-4/unit-1.md) |
+| 2 | Describe Azure storage accounts | [Dedicated lesson](module-4/unit-2.md) |
+| 3 | Describe Azure storage redundancy | [Dedicated lesson](module-4/unit-3.md) |
+| 4 | Describe Azure storage services | [Dedicated lesson](module-4/unit-4.md) |
+| 5 | Identify Azure data migration options | [Dedicated lesson](module-4/unit-5.md) |
+| 6 | Identify Azure file movement options | [Dedicated lesson](module-4/unit-6.md) |
 
 ## Module 5 — Describe Azure identity, access, and security
 
 | Unit | Reference title | Current lesson / status |
 |---|---|---|
-| 1 | Introduction | **Missing dedicated introduction** |
-| 2 | Describe Azure directory services | Partially covered in [current identity lesson](module-5/unit-1.md); split and relabel |
-| 3 | Describe Azure authentication methods | Partially covered in [current identity lesson](module-5/unit-1.md); split and relabel |
-| 4 | Describe Azure external identities | Partially covered in [current identity lesson](module-5/unit-1.md); split and relabel |
-| 5 | Describe Azure conditional access | Partially covered in [current identity lesson](module-5/unit-1.md); split and relabel |
-| 6 | Describe Azure role-based access control | Partially covered in [current identity lesson](module-5/unit-1.md); split and relabel |
-| 7 | Describe Zero Trust model | Covered in [current security lesson](module-5/unit-2.md); split and relabel |
-| 8 | Describe defense-in-depth | Covered in [current security lesson](module-5/unit-2.md); split and relabel |
-| 9 | Describe encryption and key management in Azure | Covered in [current security lesson](module-5/unit-2.md); split and relabel |
-| 10 | Describe Microsoft Defender for Cloud | Covered in [current security lesson](module-5/unit-2.md); split and relabel |
+| 1 | Introduction | [Dedicated introduction](module-5/unit-1.md) |
+| 2 | Describe Azure directory services | [Dedicated lesson](module-5/unit-2.md) |
+| 3 | Describe Azure authentication methods | [Dedicated lesson](module-5/unit-3.md) |
+| 4 | Describe Azure external identities | [Dedicated lesson](module-5/unit-4.md) |
+| 5 | Describe Azure conditional access | [Dedicated lesson](module-5/unit-5.md) |
+| 6 | Describe Azure role-based access control | [Dedicated lesson](module-5/unit-6.md) |
+| 7 | Describe Zero Trust model | [Dedicated lesson](module-5/unit-7.md) |
+| 8 | Describe defense-in-depth | [Dedicated lesson](module-5/unit-8.md) |
+| 9 | Describe encryption and key management in Azure | [Dedicated lesson](module-5/unit-9.md) |
+| 10 | Describe Microsoft Defender for Cloud | [Dedicated lesson](module-5/unit-10.md) |
+
+The combined original storage, identity, security, and networking notes have been preserved in `supplementary/` before splitting. Public/private endpoints and VM Scale Sets/Availability Sets are also preserved as supplementary lessons.
 
 ## Correction plan
 
