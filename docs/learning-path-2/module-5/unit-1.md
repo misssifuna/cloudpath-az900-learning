@@ -1,4 +1,4 @@
-# Unit 12: Azure Identity, Authentication, and Authorization
+# Learning Path 2 — Module 5, Unit 1: Azure Identity, Authentication, and Authorization
 
 **Learning Path 2 — Azure architecture and services**  
 **Module 5 — Identity, access, and security**  
