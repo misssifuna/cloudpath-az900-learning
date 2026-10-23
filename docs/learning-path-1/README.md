@@ -20,14 +20,22 @@ CloudPath uses **five app units** in Module 1. The supplied reference lists six 
 - [Flashcards for Units 2–5](module-1/flashcards-units-2-5.md)
 - [Practice questions for Units 2–5](module-1/practice-questions-units-2-5.md)
 
-## Remaining modules in this learning path
+## Module 2 — Describe the benefits of using cloud services
 
-The source reference lists:
-- Module 2 — Describe the benefits of using cloud services (6 source units)
-- Module 3 — Describe cloud service types (4 source units)
+1. [Introduction](module-2/unit-1.md)
+2. [High availability and scalability](module-2/unit-2.md)
+3. [Reliability and predictability](module-2/unit-3.md)
+4. [Security and governance](module-2/unit-4.md)
+5. [Manageability](module-2/unit-5.md)
+6. [Sustainability considerations](module-2/unit-6.md)
 
-Those modules still need dedicated lesson files and an aligned index. Do not infer that the complete Learning Path 1 is finished merely because Module 1 is mapped.
+## Module 3 — Describe cloud service types
+
+1. [Introduction](module-3/unit-1.md)
+2. [Infrastructure as a Service (IaaS)](module-3/unit-2.md)
+3. [Platform as a Service (PaaS)](module-3/unit-3.md)
+4. [Software as a Service (SaaS)](module-3/unit-4.md)
 
 ## Counting note
 
-The source reference's six Module 1 entries remain intact for traceability; the learner-facing course uses five units because two overlapping introductory topics were intentionally merged. The overall course unit total must be counted using the agreed app-unit convention, not by blindly summing every source entry.
+The source reference's six Module 1 entries remain intact for traceability; the learner-facing course uses five units because two overlapping introductory topics were intentionally merged. Modules 2 and 3 use the six and four units listed in the reference.
