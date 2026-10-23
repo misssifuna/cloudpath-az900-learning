@@ -24,13 +24,13 @@ The module and unit numbering here follows the supplied Badge Links notes. Micro
 |---|---|---|
 | 1 | Introduction | [Current lesson](module-2/unit-1.md) |
 | 2 | Describe Azure virtual machines | [Current lesson](module-2/unit-2.md) |
-| 3 | Describe Azure virtual desktop | [Existing content is currently stored at unit 6](module-2/unit-6.md); remap and relabel |
-| 4 | Describe Azure containers | [Existing content is currently stored at unit 3](module-2/unit-3.md); remap and relabel |
+| 3 | Describe Azure virtual desktop | [Aligned lesson](module-2/unit-3.md) |
+| 4 | Describe Azure containers | [Aligned lesson](module-2/unit-4.md) |
 | 5 | Describe Azure functions | [Existing lesson](module-2/unit-5.md) |
-| 6 | Describe AI, machine learning, and IoT/Edge services in Azure | **Missing dedicated lesson** |
-| 7 | Describe application hosting options | [Existing App Service lesson](module-2/unit-4.md) is only a partial match; broaden to cover the reference topic |
+| 6 | Describe AI, machine learning, and IoT/Edge services in Azure | [New dedicated lesson](module-2/unit-6-ai-machine-learning-iot-edge.md) |
+| 7 | Describe application hosting options | [Aligned lesson](module-2/unit-7.md), expanded beyond App Service |
 
-The current file module-2/unit-7.md covers Virtual Machine Scale Sets and Availability Sets. That content is useful for AZ-900, but it does not match Unit 7 in the Badge Links reference. Preserve the content and move it into the appropriate VM lesson or a clearly marked supplementary lesson; do not let it replace application hosting options.
+The former Unit 7 lesson on Virtual Machine Scale Sets and Availability Sets has been preserved as [supplementary content](supplementary/virtual-machine-scale-sets-and-availability-sets.md). The old `unit-6.md` path is now a pointer to the canonical Virtual Desktop Unit 3 lesson, to reduce confusion from the previous numbering.
 
 ## Module 3 — Describe Azure networking services
 
@@ -79,4 +79,4 @@ The existing [Public and Private Endpoints lesson](module-3/unit-3.md) is useful
 5. Verify the questionable “Create, configure, and manage users” entry against current Microsoft Learn before assigning it to a module.
 6. Audit all lesson content against the [official AZ-900 study guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900), which is the authority for current exam objectives.
 
-**Current status:** 18 lesson files exist across these five custom modules, but the reference lists 33 units. Some current files combine several topics, so this count is not a claim that 15 entire topics are absent; it means the repository has not yet been split and labelled to match the reference unit-by-unit.
+**Current status:** Module 2 has now been aligned to the reference order for Virtual Desktop (Unit 3), Containers (Unit 4), AI/ML/IoT/Edge (Unit 6), and application hosting (Unit 7). The VM Scale Sets and Availability Sets material is preserved as supplementary content. Other modules still need the same careful unit-by-unit split and alignment; do not treat this path as fully reconciled yet.
