@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
     paths:
-      - "cloudpath-az900-prototype.zip"
+      - "cloudpath-development/cloudpath-az900-prototype/**"
+      - "docs/**"
       - "demo.html"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
@@ -27,20 +28,25 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Prepare approved prototype and demo page
+
+      - name: Prepare CloudPath site
         run: |
           mkdir -p site
-          unzip -q cloudpath-az900-prototype.zip -d extracted
-          cp extracted/cloudpath-az900-prototype/index.html site/index.html
+          cp cloudpath-development/cloudpath-az900-prototype/index.html site/index.html
+          cp -R cloudpath-development/cloudpath-az900-prototype/assets site/assets
+          cp -R docs site/docs
           cp demo.html site/demo.html
+
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
