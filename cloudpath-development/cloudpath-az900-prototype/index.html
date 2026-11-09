@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CloudPath — AZ-900 Learning Companion</title>
+<style>
+:root{--navy:#101d35;--navy2:#172844;--teal:#18a999;--cyan:#63d8d1;--ink:#17243a;--muted:#718096;--line:#e4eaf1;--bg:#f5f8fc;--white:#fff;--soft:#e9f8f6;--amber:#fff4d8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink)}
+button{font:inherit;cursor:pointer;border:0}.app{min-height:100vh;display:grid;grid-template-columns:248px 1fr}
+.sidebar{background:var(--navy);color:#fff;padding:25px 17px;display:flex;flex-direction:column;gap:25px}.brand{display:flex;gap:11px;align-items:center;padding:0 8px}.brandmark{width:39px;height:39px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--cyan));display:grid;place-items:center;color:var(--navy);font-weight:900;font-size:20px}.brand strong{display:block;font-size:17px;letter-spacing:.2px}.brand small{color:#a9b9d0;font-size:11px}.navlabel{color:#8294ad;text-transform:uppercase;letter-spacing:1.3px;font-size:10px;padding:0 12px;margin-bottom:5px}.nav button{width:100%;display:flex;align-items:center;gap:11px;background:transparent;color:#c2cddd;padding:11px 12px;border-radius:10px;text-align:left;margin:3px 0}.nav button.active,.nav button:hover{background:#263954;color:white}.nav .ico{width:20px;text-align:center}.sidebar-foot{margin-top:auto;background:#1a2c47;border:1px solid #31435d;border-radius:14px;padding:14px}.sidebar-foot small{color:#9aacc3}.sidebar-foot strong{display:block;margin:5px 0 9px}.mini-track{height:5px;background:#344760;border-radius:9px;overflow:hidden}.mini-track span{display:block;height:100%;background:var(--cyan);width:0%}
+main{min-width:0}.topbar{height:75px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px;gap:18px}.crumb{color:var(--muted);font-size:13px}.crumb b{color:var(--ink)}.topright{display:flex;align-items:center;gap:12px}.pill{background:#effaf8;color:#087f73;padding:7px 11px;border-radius:99px;font-size:12px;font-weight:700}.avatar{width:36px;height:36px;border-radius:50%;background:#d9f4ef;color:#087f73;display:grid;place-items:center;font-weight:800}
+.content{max-width:1250px;margin:auto;padding:30px 34px 50px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:1.6px;color:#138c80;text-transform:uppercase}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin:7px 0 24px}.heading h1{font-size:30px;letter-spacing:-.8px;line-height:1.15;margin:0 0 9px;color:var(--navy)}.heading p{margin:0;color:var(--muted);max-width:660px}.primary{background:var(--teal);color:#062e31;padding:11px 16px;border-radius:10px;font-weight:800;box-shadow:0 5px 12px #18a99922}.primary:hover{filter:brightness(.96)}.secondary{background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:10px;color:var(--ink);font-weight:700}
+.hero{background:linear-gradient(120deg,#13233e,#203b5c);border-radius:18px;padding:25px 27px;color:#fff;display:grid;grid-template-columns:1.5fr .8fr;gap:24px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:250px;height:250px;border:1px solid #ffffff13;border-radius:50%;right:8%;top:-120px;box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff05}.hero h2{font-size:23px;margin:0 0 9px;position:relative;z-index:1}.hero p{color:#c0cede;margin:0 0 19px;max-width:520px;position:relative;z-index:1}.hero .primary{position:relative;z-index:1}.hero-stat{border-left:1px solid #ffffff20;padding-left:25px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1}.hero-stat small{color:#b3c5d9}.hero-stat strong{font-size:35px;line-height:1.3}.hero-stat span{color:#a4e7dd;font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0 28px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px}.stat-top{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.stat-icon{width:31px;height:31px;border-radius:9px;background:#edf8f7;display:grid;place-items:center;color:#098e82}.stat strong{display:block;font-size:25px;margin:8px 0 2px;color:var(--navy)}.stat small{color:var(--muted);font-size:11px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin:0 0 13px;gap:12px}.section-head h2{margin:0;font-size:18px;color:var(--navy)}.section-head a{font-size:12px;color:#0b8d81;font-weight:800;text-decoration:none}
+.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.path-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;display:flex;flex-direction:column;min-width:0}.path-num{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.path-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:19px;background:#eaf8f6}.path-tag{font-size:10px;background:#f0f3f8;color:#62738b;border-radius:6px;padding:5px 7px;font-weight:800}.path-card h3{font-size:15px;margin:0 0 8px;line-height:1.4}.path-card p{font-size:12px;color:var(--muted);margin:0 0 15px;min-height:37px}.progress-row{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:7px}.progress{height:6px;border-radius:8px;background:#edf1f5;overflow:hidden}.progress span{display:block;height:100%;background:var(--teal);border-radius:8px}.path-card .secondary{margin-top:16px;width:100%;font-size:12px}
+.bottom-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:27px}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:19px;min-width:0}.panel h2{font-size:17px;margin:0 0 4px;color:var(--navy)}.sub{color:var(--muted);font-size:12px;margin:0 0 15px}.unit-list{display:grid;gap:8px}.unit{display:flex;align-items:center;gap:12px;border:1px solid #edf0f5;border-radius:11px;padding:11px}.unit-check{width:30px;height:30px;border-radius:9px;background:#eaf8f6;color:#0a8e81;display:grid;place-items:center;flex-shrink:0}.unit-main{flex:1;min-width:0}.unit-main strong{display:block;font-size:12px}.unit-main small{color:var(--muted);font-size:11px}.unit button{background:#f4f7fa;border-radius:8px;padding:7px 9px;color:#51647b;font-size:11px;font-weight:800}.focus-box{background:#f0faf8;border:1px solid #d5f0eb;border-radius:12px;padding:14px;margin-bottom:13px}.focus-box small{color:#0c8277;font-weight:800;font-size:10px;letter-spacing:1px;text-transform:uppercase}.focus-box strong{display:block;margin:5px 0;font-size:14px}.focus-box p{font-size:12px;color:#56736f;margin:0}.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.quick-actions button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px;text-align:left;font-size:12px;font-weight:800;color:var(--ink)}.quick-actions span{display:block;color:var(--muted);font-size:10px;font-weight:500;margin-top:4px}
+.view{display:none}.view.active{display:block}.roadmap-path{margin:12px 0;border:1px solid var(--line);background:#fff;border-radius:14px;overflow:hidden}.roadmap-title{display:flex;align-items:center;gap:12px;padding:17px;cursor:pointer}.roadmap-title:hover{background:#f9fbfd}.roadmap-title .grow{flex:1}.roadmap-title h3{font-size:14px;margin:0}.roadmap-title p{font-size:11px;color:var(--muted);margin:3px 0 0}.modules{border-top:1px solid var(--line);padding:10px 17px 17px;display:grid;gap:8px}.module{padding:12px;border-radius:10px;background:#f8fafc}.module strong{font-size:12px}.module ul{margin:7px 0 0;padding-left:18px;color:#63728a;font-size:12px}.module li{margin:4px 0}.unit-link{color:#0a897e;text-decoration:none;font-weight:700}.quizbox{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;max-width:800px}.quizbox h2{margin:8px 0 20px;font-size:22px}.answer{display:flex;gap:11px;border:1px solid var(--line);border-radius:11px;padding:13px;margin:9px 0;cursor:pointer;align-items:flex-start}.answer:hover{border-color:#8ddbd2;background:#f5fcfb}.answer input{margin-top:4px;accent-color:var(--teal)}.feedback{padding:13px;border-radius:10px;margin:15px 0;font-size:13px;display:none}.feedback.show{display:block}.feedback.good{background:#eaf8f0;color:#17653b}.feedback.bad{background:#fff4e3;color:#835515}
+.flashcard{min-height:210px;border-radius:15px;background:linear-gradient(135deg,#142641,#244768);color:#fff;display:grid;place-items:center;text-align:center;padding:25px;cursor:pointer}.flashcard small{color:#9ce7de;text-transform:uppercase;letter-spacing:1.5px;font-weight:800}.flashcard h2{font-size:25px;max-width:500px}.flashcard p{color:#d1dceb}.flash-controls{display:flex;gap:10px;justify-content:center;margin-top:14px}
+.chat-panel{max-width:800px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px}.chat-message{padding:13px 15px;border-radius:12px;background:#f1f6fb;margin:10px 0;font-size:13px}.chat-message.ai{background:#eaf8f6}.chat-input{display:flex;gap:8px;margin-top:14px}.chat-input input{flex:1;min-width:0;padding:12px;border:1px solid var(--line);border-radius:10px;font:inherit}
+.note{font-size:11px;color:var(--muted);margin-top:17px}.toast{position:fixed;bottom:18px;right:18px;background:var(--navy);color:#fff;padding:12px 16px;border-radius:10px;display:none;box-shadow:0 10px 30px #101d3525}.toast.show{display:block}
+@media(max-width:1000px){.app{grid-template-columns:205px 1fr}.path-grid{grid-template-columns:1fr}.path-card p{min-height:0}.stats{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero-stat{border-left:0;border-top:1px solid #ffffff20;padding:14px 0 0}.bottom-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.app{display:block}.sidebar{padding:12px;gap:12px}.brand{padding:4px}.sidebar .navlabel,.sidebar-foot{display:none}.nav{display:flex;overflow:auto;gap:4px}.nav button{white-space:nowrap;width:auto;padding:9px 11px;margin:0;font-size:12px}.nav .ico{display:none}.topbar{height:55px;padding:0 17px}.topright .pill{display:none}.content{padding:22px 16px 40px}.heading{display:block}.heading h1{font-size:26px}.heading .primary{margin-top:16px}.hero{padding:21px}.stats{gap:9px}.stat{padding:13px}.stat strong{font-size:22px}.path-grid{gap:10px}.bottom-grid{gap:12px}.section-head h2{font-size:16px}.unit{padding:9px}.unit button{font-size:10px}.quizbox{padding:17px}}
+
+.lesson-reader{max-width:1000px;margin:0 auto}
+.lesson-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.lesson-content{background:var(--panel,#fff);border:1px solid var(--line,#e5e7eb);border-radius:16px;padding:clamp(18px,3vw,32px);line-height:1.75;overflow-wrap:anywhere}
+.lesson-content h1,.lesson-content h2,.lesson-content h3{line-height:1.3;margin:1.5em 0 .6em}
+.lesson-content h1:first-child,.lesson-content h2:first-child{margin-top:0}
+.lesson-content p,.lesson-content ul,.lesson-content ol{margin:0 0 1em}
+.lesson-content pre{overflow-x:auto;padding:16px;border-radius:10px;background:#172033;color:#f8fafc}
+.lesson-content code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+.lesson-content :not(pre)>code{background:#eef2f7;padding:2px 5px;border-radius:5px}
+.lesson-content table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;margin:18px 0}
+.lesson-content th,.lesson-content td{border:1px solid #d8dee8;padding:9px 12px;text-align:left}
+.lesson-content th{background:#eef2f7}
+.lesson-content blockquote{margin:18px 0;padding:12px 18px;border-left:4px solid #0f9e9a;background:#f0fdfa}
+.lesson-content img{max-width:100%;height:auto}
+.lesson-content a{color:#0f817d;text-decoration:underline}
+.lesson-navigation{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:20px 0}
+.lesson-status{color:var(--muted,#64748b);font-size:.9rem}
+
+.lesson-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.lesson-row label{flex:1;min-width:220px}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brandmark">C</div><div><strong>CloudPath</strong><small>AZ-900 Learning Companion</small></div></div>
+  <div><div class="navlabel">Workspace</div><nav class="nav" id="nav">
+    <button class="active" data-view="dashboard"><span class="ico">▦</span>Dashboard</button>
+    <button data-view="roadmap"><span class="ico">⌘</span>Learning roadmap</button>
+    <button data-view="practice"><span class="ico">✓</span>Practice lab</button>
+    <button data-view="flashcards"><span class="ico">▤</span>Flashcards</button>
+    <button data-view="tutor"><span class="ico">✳</span>Ask the tutor</button>
+  </nav></div>
+  <div class="sidebar-foot"><small>YOUR LEARNING JOURNEY</small><strong id="sideProgress">0% completed</strong><div class="mini-track"><span id="sideBar"></span></div><small style="display:block;margin-top:9px">Small steps. Strong foundations.</small></div>
+</aside>
+<main>
+<header class="topbar"><div class="crumb">Learning workspace / <b id="crumb">Dashboard</b></div><div class="topright"><span class="pill">UNOFFICIAL STUDY TOOL</span><div class="avatar">E</div></div></header>
+<div class="content">
+<section class="view active" id="dashboard">
+  <div class="eyebrow">Your cloud journey starts here</div>
+  <div class="heading"><div><h1>Learn cloud. Make it click.</h1><p>A guided path through AZ-900, with practical examples, quick checks and a clear view of what to study next.</p></div><button class="primary" onclick="showView('roadmap')">Continue learning →</button></div>
+  <div class="hero"><div><h2>Build your Azure fundamentals, one concept at a time.</h2><p>Follow the learning paths in order. Understand a concept, practise it, then track what you have mastered.</p><button class="primary" onclick="showView('roadmap')">Open learning roadmap&nbsp; ↗</button></div><div class="hero-stat"><small>YOUR ROADMAP PROGRESS</small><strong id="heroPct">0%</strong><span>Progress saves in this browser in this prototype</span></div></div>
+  <div class="stats">
+    <div class="stat"><div class="stat-top">Units completed <span class="stat-icon">✓</span></div><strong id="completedCount">0</strong><small>Mark units complete as you learn</small></div>
+    <div class="stat"><div class="stat-top">Learning paths <span class="stat-icon">⌘</span></div><strong>3</strong><small>Your supplied AZ-900 roadmap</small></div>
+    <div class="stat"><div class="stat-top">Practice accuracy <span class="stat-icon">◎</span></div><strong id="accuracy">—</strong><small>Based on quizzes attempted here</small></div>
+    <div class="stat"><div class="stat-top">Review queue <span class="stat-icon">↻</span></div><strong id="reviewCount">0</strong><small>Questions you answered incorrectly</small></div>
+  </div>
+  <div class="section-head"><h2>Your learning paths</h2><a href="#" onclick="showView('roadmap');return false">Explore full roadmap →</a></div>
+  <div class="path-grid" id="pathCards"></div>
+  <div class="bottom-grid"><div class="panel"><h2>Pick up where you left off</h2><p class="sub">Your next useful step</p><div class="unit-list"><div class="unit"><div class="unit-check">→</div><div class="unit-main"><strong>Start with cloud computing</strong><small>Path 1 · Module 1 · Understand the foundation</small></div><button onclick="showView('practice')">Practise</button></div><div class="unit"><div class="unit-check">▤</div><div class="unit-main"><strong>Review the key terms</strong><small>Cloud model, shared responsibility, consumption</small></div><button onclick="showView('flashcards')">Review</button></div></div></div>
+  <div class="panel"><h2>Study smart</h2><p class="sub">A repeatable learning loop</p><div class="focus-box"><small>RECOMMENDED ROUTINE</small><strong>Learn → Recall → Practise → Review</strong><p>Don't just mark a unit complete. Check whether you can explain the idea and apply it to a real situation.</p></div><div class="quick-actions"><button onclick="showView('practice')">✓ Practice questions<span>Check your understanding</span></button><button onclick="showView('tutor')">✳ Ask the tutor<span>Get a plain-language explanation</span></button></div></div></div>
+  <p class="note">Prototype note: learning progress is stored locally in this browser only. Cloud sync, user accounts and a live AI tutor are not connected yet. This is an unofficial learning aid, not Microsoft exam content.</p>
+</section>
+<section class="view" id="roadmap">
+  <div class="eyebrow">The syllabus, organised</div><div class="heading"><div><h1>Learning roadmap</h1><p>Three learning paths, arranged in a clear sequence. Expand a path to see its modules and units.</p></div><button class="secondary" onclick="resetProgress()">Reset prototype progress</button></div>
+  <div id="roadmapContent"></div>
+  <p class="note">The structure below is seeded from the Azure Badge Links outline you shared. Before publishing, we should reconcile every unit title against the exact Microsoft Learn source, especially any title that appears out of place.</p>
+</section>
+<section class="view" id="lesson">
+  <div class="lesson-reader">
+    <div class="eyebrow">CloudPath learning notes</div>
+    <div class="heading">
+      <div>
+        <h1 id="lessonTitle">Lesson</h1>
+        <p id="lessonSubtitle">Read the lesson and work through its examples.</p>
+      </div>
+      <button class="secondary" onclick="showView('roadmap')">← Back to roadmap</button>
+    </div>
+    <div class="lesson-toolbar">
+      <span class="lesson-status" id="lessonStatus">Lesson content will appear here.</span>
+      <button class="secondary" id="lessonCompleteButton" onclick="completeCurrentLesson()">Mark lesson complete</button>
+    </div>
+    <article class="lesson-content" id="lessonContent">
+      <p>Choose a lesson from the learning roadmap to begin.</p>
+    </article>
+    <div class="lesson-navigation">
+      <button class="secondary" id="previousLessonButton" onclick="navigateLesson(-1)" disabled>← Previous lesson</button>
+      <button class="secondary" id="nextLessonButton" onclick="navigateLesson(1)" disabled>Next lesson →</button>
+    </div>
+  </div>
+</section>
+
+<section class="view" id="practice">
+  <div class="eyebrow">Practice lab</div><div class="heading"><div><h1>Test your understanding</h1><p>Original practice questions, with feedback that explains the concept. These are not real Microsoft exam questions.</p></div></div>
+  <div class="quizbox"><div class="eyebrow">PATH 1 · CLOUD CONCEPTS</div><h2 id="questionText">What does a consumption-based cloud model mean?</h2><div id="answers"></div><div id="feedback" class="feedback"></div><div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:16px"><button class="primary" id="checkBtn" onclick="checkAnswer()">Check answer</button><button class="secondary" id="nextBtn" onclick="nextQuestion()" style="display:none">Next question →</button></div></div>
+  <p class="note">Initial prototype includes a small sample quiz to test the interaction. The full build should have original questions for every unit, with explanations for all answer options.</p>
+</section>
+<section class="view" id="flashcards">
+  <div class="eyebrow">Active recall</div><div class="heading"><div><h1>Flashcards</h1><p>Try to explain the concept before revealing the answer. Short, repeated recall helps you find gaps.</p></div></div>
+  <div class="quizbox"><div class="flashcard" id="flashcard" onclick="flipCard()"><div><small id="flashLabel">CARD 1 · QUESTION</small><h2 id="flashFront">What is cloud computing?</h2><p id="flashHint">Tap the card to reveal the answer</p></div></div><div class="flash-controls"><button class="secondary" onclick="prevCard()">← Previous</button><button class="primary" onclick="flipCard()">Flip card</button><button class="secondary" onclick="nextCard()">Next →</button></div><p class="note" id="flashCount" style="text-align:center">1 of 5</p></div>
+</section>
+<section class="view" id="tutor">
+  <div class="eyebrow">Plain-language support</div><div class="heading"><div><h1>Ask the learning tutor</h1><p>Try a question about a cloud concept. This prototype uses prepared explanations; a real AI assistant will be connected later.</p></div></div>
+  <div class="chat-panel"><div class="chat-message ai"><strong>CloudPath Tutor</strong><br>Hi! Ask me about cloud concepts. I can explain them with familiar examples, such as how GeekHub might host a school website.</div><div class="chat-message"><strong>You could ask:</strong><br><a class="unit-link" href="#" onclick="askExample('Explain IaaS, PaaS and SaaS using a school website example.');return false">Explain IaaS, PaaS and SaaS using a school website example.</a><br><a class="unit-link" href="#" onclick="askExample('What is the shared responsibility model?');return false">What is the shared responsibility model?</a><br><a class="unit-link" href="#" onclick="askExample('When should a business use a virtual machine instead of a container?');return false">When should a business use a virtual machine instead of a container?</a></div><div id="chatHistory"></div><form class="chat-input" onsubmit="sendTutor(event)"><input id="tutorInput" placeholder="Ask about a cloud concept…" aria-label="Ask a question"><button class="primary">Ask</button></form><p class="note">AI integration is not active in this version. Don't enter confidential information.</p></div>
+</section>
+</div></main></div><div class="toast" id="toast"></div>
+<script src="assets/markdown-it.umd.min.js"></script>
+<script>
+
+const paths = [
+{id:1,title:"Describe cloud concepts",desc:"Understand cloud computing, its models and the way cloud services are consumed.",icon:"☁",modules:[
+{title:"Describe cloud computing",units:["Introduction to Microsoft Azure Fundamentals","Introduction to cloud computing","Describe the shared responsibility model","Define cloud models","Describe the consumption-based model"]},
+{title:"Describe the benefits of using cloud services",units:["Introduction to the benefits of cloud services","Describe the benefits of high availability and scalability in the cloud","Describe the benefits of reliability and predictability in the cloud","Describe the benefits of security and governance in the cloud","Describe the benefits of manageability in the cloud","Describe sustainability considerations in the cloud"]},
+{title:"Describe cloud service types",units:["Introduction to cloud service types","Describe Infrastructure as a Service (IaaS)","Describe Platform as a Service (PaaS)","Describe Software as a Service (SaaS)"]}
+]},
+{id:2,title:"Describe Azure architecture and services",desc:"Explore Azure's infrastructure, compute, networking, storage, identity and security.",icon:"◈",modules:[
+{title:"Describe the core architectural components of Azure",units:["Introduction","What is Microsoft Azure?","Get started with Azure accounts","Describe Azure physical infrastructure","Describe Azure management infrastructure"]},
+{title:"Describe Azure compute services",units:["Introduction to Azure compute","Azure Virtual Machines","Azure Virtual Desktop","Azure containers","Azure Functions","Describe AI, machine learning, and IoT/Edge services in Azure","Azure App Service"]},
+{title:"Describe Azure networking services",units:["Introduction to Azure networking services","Azure Virtual Networks and Subnets","Describe Azure virtual private networks","Describe Azure ExpressRoute","Describe Azure DNS"]},
+{title:"Describe Azure storage services",units:["Introduction to Azure storage services","Describe Azure storage accounts","Describe Azure storage redundancy","Describe Azure storage services","Identify Azure data migration options","Identify Azure file movement options"]},
+{title:"Describe Azure identity, access, and security",units:["Introduction to Azure identity, access, and security","Describe Azure directory services","Describe Azure authentication methods","Describe Azure external identities","Describe Azure conditional access","Describe Azure role-based access control","Describe the Zero Trust model","Describe defense-in-depth","Describe encryption and key management in Azure","Describe Microsoft Defender for Cloud"]}
+]},
+{id:3,title:"Describe Azure management and governance",desc:"Learn to control costs, enforce governance, deploy resources and monitor services.",icon:"◎",modules:[
+{title:"Describe cost management in Azure",units:["Introduction to Azure cost management","Describe factors that can affect costs in Azure","Explore the Azure Pricing Calculator","Describe Microsoft Cost Management","Describe the purpose of tags","Describe cost optimization options in Azure"]},
+{title:"Describe features and tools in Azure for governance and compliance",units:["Introduction to Azure governance and compliance","Describe the purpose of Microsoft Purview","Describe the purpose of Azure Policy","Describe the purpose of resource locks","Describe the purpose of the Service Trust Portal"]},
+{title:"Describe features and tools for managing and deploying Azure resources",units:["Introduction to Azure management and deployment tools","Describe tools for interacting with Azure","Describe the purpose of Azure Arc","Describe Azure Resource Manager and ARM templates"]},
+{title:"Describe monitoring tools in Azure",units:["Introduction to Azure monitoring tools","Describe the purpose of Azure Advisor","Describe Azure Service Health","Describe Azure Monitor"]}
+]}
+];
+
+// Build the canonical Markdown paths using the lesson counts in each module.
+const lessonCounts = {
+  1: [5, 6, 4],
+  2: [5, 7, 5, 6, 10],
+  3: [6, 5, 4, 4]
+};
+
+const lessonFiles = Object.fromEntries(
+  Object.entries(lessonCounts).map(([pathId, modules]) => [
+    pathId,
+    modules.map((count, moduleIndex) =>
+      Array.from({length: count}, (_, unitIndex) =>
+        `docs/learning-path-${pathId}/module-${moduleIndex + 1}/unit-${unitIndex + 1}.md`
+      )
+    )
+  ])
+);
+const questions=[
+{q:"What does a consumption-based cloud model mean?",a:["You pay a fixed fee regardless of use.","You pay for the cloud resources you consume.","You must buy physical servers before using cloud services.","All cloud services are free until the end of the year."],correct:1,explain:"In a consumption-based model, charges are based on the resources used. For example, a business may pay for the compute and storage it consumes instead of buying and maintaining its own server hardware."},
+{q:"A school wants to use an online email application without managing its servers or operating system. Which service type best fits?",a:["IaaS","PaaS","SaaS","On-premises infrastructure"],correct:2,explain:"SaaS provides a complete software application that the provider operates. The customer mainly configures and uses the application rather than managing its underlying infrastructure."},
+{q:"Which cloud benefit describes the ability to increase or decrease resources as demand changes?",a:["Scalability","Data residency","Resource locking","Manual provisioning"],correct:0,explain:"Scalability is the ability to adjust resources to meet demand. It can help an application handle a busy admissions period and scale down when demand falls."}
+];
+const cards=[
+["What is cloud computing?","The delivery of computing services—such as servers, storage, databases and software—over a network, usually the internet."],
+["What is the consumption-based model?","You pay for the resources you consume, helping align costs with actual usage."],
+["What is IaaS?","Infrastructure as a Service: rent core infrastructure such as virtual machines while managing the operating system and applications."],
+["What is PaaS?","Platform as a Service: deploy applications on a managed platform without managing the underlying operating system and much of the infrastructure."],
+["What is SaaS?","Software as a Service: use a complete provider-managed application, typically through a browser or app."]
+];
+
+const progressStorageKey = "cloudpath-progress";
+const oldProgressData = localStorage.getItem(progressStorageKey);
+
+if (oldProgressData && !localStorage.getItem("cloudpath-progress-backup-before-reader")) {
+  localStorage.setItem("cloudpath-progress-backup-before-reader", oldProgressData);
+}
+
+let progress;
+try {
+  progress = oldProgressData
+    ? JSON.parse(oldProgressData)
+    : {done: [], correct: 0, attempts: 0, wrong: []};
+} catch {
+  progress = {done: [], correct: 0, attempts: 0, wrong: []};
+}
+
+progress.done = Array.isArray(progress.done) ? progress.done : [];
+progress.wrong = Array.isArray(progress.wrong) ? progress.wrong : [];
+progress.correct = Number(progress.correct) || 0;
+progress.attempts = Number(progress.attempts) || 0;
+
+progress.done = [...new Set(progress.done.map(key => {
+  const parts = key.split("|");
+  if (parts.length !== 3) return key;
+
+  if (parts[2] === "What is cloud computing?") {
+    parts[2] = "Introduction to cloud computing";
+  }
+
+  return parts.join("|");
+}))];
+
+let qi=0,selected=null,answered=false,ci=0,flipped=false;
+const allUnits=()=>paths.flatMap(p=>p.modules.flatMap(m=>m.units.map(u=>`${p.id}|${m.title}|${u}`)));
+function save(){localStorage.setItem("cloudpath-progress",JSON.stringify(progress));renderStats()}
+function renderStats(){let total=allUnits().length,done=progress.done.length,pct=Math.round(done/total*100);document.getElementById("completedCount").textContent=done;document.getElementById("heroPct").textContent=pct+"%";document.getElementById("sideProgress").textContent=pct+"% completed";document.getElementById("sideBar").style.width=pct+"%";document.getElementById("accuracy").textContent=progress.attempts?Math.round(progress.correct/progress.attempts*100)+"%":"—";document.getElementById("reviewCount").textContent=progress.wrong.length;document.querySelectorAll("[data-progress]").forEach(el=>{let p=paths.find(x=>x.id===+el.dataset.progress),n=p.modules.reduce((a,m)=>a+m.units.filter(u=>progress.done.includes(`${p.id}|${m.title}|${u}`)).length,0),t=p.modules.reduce((a,m)=>a+m.units.length,0);el.textContent=Math.round(n/t*100)+"%"});document.querySelectorAll("[data-bar]").forEach(el=>{let p=paths.find(x=>x.id===+el.dataset.bar),n=p.modules.reduce((a,m)=>a+m.units.filter(u=>progress.done.includes(`${p.id}|${m.title}|${u}`)).length,0),t=p.modules.reduce((a,m)=>a+m.units.length,0);el.style.width=(n/t*100)+"%"})}
+function renderPaths(){document.getElementById("pathCards").innerHTML=paths.map(p=>`<article class="path-card"><div class="path-num"><div class="path-icon">${p.icon}</div><span class="path-tag">PATH 0${p.id}</span></div><h3>${p.title}</h3><p>${p.desc}</p><div class="progress-row"><span>Progress</span><strong data-progress="${p.id}">0%</strong></div><div class="progress"><span data-bar="${p.id}" style="width:0%"></span></div><button class="secondary" onclick="showView('roadmap')">Explore path →</button></article>`).join("");renderStats()}
+function renderRoadmap(){
+  const container=document.getElementById("roadmapContent");
+  container.innerHTML=paths.map((p,i)=>{
+    const modulesHtml=p.modules.map((m,mi)=>{
+      const unitsHtml=m.units.map((u,ui)=>{
+        const key=p.id+"|"+m.title+"|"+u;
+        const done=progress.done.includes(key);
+        return '<li><div class="lesson-row"><label><input type="checkbox" '+(done?"checked":"")+' onchange="toggleUnit(&quot;'+encodeURIComponent(key)+'&quot;,this.checked)"> '+(done?"✓ ":"")+u+'</label><button class="secondary" onclick="openLesson('+p.id+','+mi+','+ui+')">Study lesson →</button></div></li>';
+      }).join("");
+      return '<div class="module"><strong>Module '+(mi+1)+': '+m.title+'</strong><ul>'+unitsHtml+'</ul></div>';
+    }).join("");
+
+    return '<div class="roadmap-path"><div class="roadmap-title" onclick="togglePath('+p.id+')"><div class="path-icon">'+p.icon+'</div><div class="grow"><h3>Path 0'+p.id+' · '+p.title+'</h3><p>'+p.modules.length+' modules · '+p.modules.reduce((a,m)=>a+m.units.length,0)+' lessons</p></div><strong data-progress="'+p.id+'">0%</strong><span id="arrow'+p.id+'">⌄</span></div><div class="modules" id="modules'+p.id+'" '+(i!==0?'style="display:none"':'')+'>'+modulesHtml+'</div></div>';
+  }).join("");
+
+  renderStats();
+}
+
+let currentLesson = null;
+let currentLessonIndex = -1;
+let currentResourceUrl = null;
+
+const markdownRenderer = window.markdownit({
+  html: false,
+  linkify: true,
+  typographer: true
+});
+
+function getLessonList() {
+  return paths.flatMap(path => path.modules.flatMap((module, moduleIndex) =>
+    module.units.map((title, unitIndex) => ({
+      pathId: path.id,
+      pathTitle: path.title,
+      moduleTitle: module.title,
+      moduleIndex,
+      unitIndex,
+      title,
+      file: lessonFiles[path.id][moduleIndex][unitIndex],
+      key: path.id + "|" + module.title + "|" + title
+    }))
+  ));
+}
+
+function updateLessonControls() {
+  if (!currentLesson) return;
+
+  const complete = progress.done.includes(currentLesson.key);
+  document.getElementById("lessonCompleteButton").textContent =
+    complete ? "✓ Lesson completed" : "Mark lesson complete";
+
+  document.getElementById("previousLessonButton").disabled =
+    currentLessonIndex <= 0;
+
+  document.getElementById("nextLessonButton").disabled =
+    currentLessonIndex >= getLessonList().length - 1;
+}
+
+async function renderMarkdownResource(url, title) {
+  const content = document.getElementById("lessonContent");
+  const status = document.getElementById("lessonStatus");
+
+  currentResourceUrl = url instanceof URL
+    ? url
+    : new URL(url, document.baseURI);
+
+  status.textContent = "Loading lesson content…";
+  content.innerHTML = "<p>Loading…</p>";
+
+  try {
+    const response = await fetch(currentResourceUrl.href);
+    if (!response.ok) throw new Error("HTTP " + response.status);
+
+    const markdown = await response.text();
+    content.innerHTML = markdownRenderer.render(markdown);
+
+    content.querySelectorAll("a").forEach(link => {
+      const href = link.getAttribute("href");
+      if (!href) return;
+
+      let target;
+      try {
+        target = new URL(href, currentResourceUrl);
+      } catch {
+        return;
+      }
+
+      if (target.protocol !== "http:" && target.protocol !== "https:") return;
+
+      if (target.origin !== location.origin) {
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+      }
+
+      if (/\.md(?:$|[?#])/i.test(href)) {
+        link.addEventListener("click", event => {
+          event.preventDefault();
+          renderMarkdownResource(
+            target,
+            link.textContent.trim() || "Related reading"
+          );
+        });
+      }
+    });
+
+    status.textContent = title || "Reading material loaded";
+  } catch (error) {
+    content.innerHTML =
+      "<h2>Unable to load this lesson</h2>" +
+      "<p>Check that the Markdown file exists and that the prototype " +
+      "is being served over HTTP.</p>";
+
+    status.textContent = "Could not load lesson content: " + error.message;
+  }
+}
+
+async function loadLessonAt(index) {
+  const lessons = getLessonList();
+  if (index < 0 || index >= lessons.length) return;
+
+  currentLessonIndex = index;
+  currentLesson = lessons[index];
+
+  document.getElementById("lessonTitle").textContent = currentLesson.title;
+  document.getElementById("lessonSubtitle").textContent =
+    currentLesson.pathTitle + " · " + currentLesson.moduleTitle;
+
+  const local = location.pathname.includes(
+    "/cloudpath-development/cloudpath-az900-prototype/"
+  );
+
+  const base = local ? "../../" : "./";
+  const url = new URL(base + currentLesson.file, document.baseURI);
+
+  showView("lesson");
+  document.getElementById("lessonStatus").textContent =
+    "Lesson " + (index + 1) + " of " + lessons.length;
+
+  updateLessonControls();
+  await renderMarkdownResource(url, currentLesson.title);
+}
+
+function openLesson(pathId, moduleIndex, unitIndex) {
+  const index = getLessonList().findIndex(item =>
+    item.pathId === pathId &&
+    item.moduleIndex === moduleIndex &&
+    item.unitIndex === unitIndex
+  );
+
+  if (index !== -1) loadLessonAt(index);
+}
+
+function navigateLesson(direction) {
+  loadLessonAt(currentLessonIndex + direction);
+}
+
+function completeCurrentLesson() {
+  if (!currentLesson) return;
+
+  if (!progress.done.includes(currentLesson.key)) {
+    progress.done.push(currentLesson.key);
+    save();
+    renderRoadmap();
+    toast("Lesson marked complete");
+  }
+
+  updateLessonControls();
+}
+
+function togglePath(id){let el=document.getElementById("modules"+id);el.style.display=el.style.display==="none"?"grid":"none"}
+function toggleUnit(encoded,checked){let key=decodeURIComponent(encoded);if(checked&&!progress.done.includes(key))progress.done.push(key);if(!checked)progress.done=progress.done.filter(x=>x!==key);save();renderRoadmap();toast(checked?"Unit marked complete":"Unit marked incomplete")}
+function showView(id){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===id));document.getElementById("crumb").textContent=({dashboard:"Dashboard",roadmap:"Learning roadmap",practice:"Practice lab",flashcards:"Flashcards",tutor:"Ask the tutor"})[id];window.scrollTo({top:0,behavior:"smooth"})}
+document.getElementById("nav").addEventListener("click",e=>{let b=e.target.closest("button[data-view]");if(b)showView(b.dataset.view)});
+function renderQuestion(){let q=questions[qi];selected=null;answered=false;document.getElementById("questionText").textContent=q.q;document.getElementById("answers").innerHTML=q.a.map((a,i)=>`<label class="answer"><input type="radio" name="answer" value="${i}" onchange="selected=${i}"><span>${String.fromCharCode(65+i)}. ${a}</span></label>`).join("");document.getElementById("feedback").className="feedback";document.getElementById("feedback").textContent="";document.getElementById("checkBtn").style.display="inline-block";document.getElementById("nextBtn").style.display="none"}
+function checkAnswer(){if(answered)return;if(selected===null){toast("Choose an answer first");return}answered=true;let q=questions[qi],good=selected===q.correct;progress.attempts++;if(good){progress.correct++;progress.wrong=progress.wrong.filter(x=>x!==qi)}else if(!progress.wrong.includes(qi))progress.wrong.push(qi);save();let f=document.getElementById("feedback");f.className="feedback show "+(good?"good":"bad");f.innerHTML=`<strong>${good?"Correct!":"Not quite."}</strong> ${q.explain}`;document.getElementById("checkBtn").style.display="none";document.getElementById("nextBtn").style.display="inline-block";document.querySelectorAll('input[name="answer"]').forEach(x=>x.disabled=true)}
+function nextQuestion(){qi=(qi+1)%questions.length;renderQuestion()}
+function renderCard(){document.getElementById("flashLabel").textContent=`CARD ${ci+1} · ${flipped?"ANSWER":"QUESTION"}`;document.getElementById("flashFront").textContent=cards[ci][flipped?1:0];document.getElementById("flashHint").textContent=flipped?"Tap again or move to another card":"Think of your answer, then flip the card";document.getElementById("flashCount").textContent=`${ci+1} of ${cards.length}`}
+function flipCard(){flipped=!flipped;renderCard()}function nextCard(){ci=(ci+1)%cards.length;flipped=false;renderCard()}function prevCard(){ci=(ci-1+cards.length)%cards.length;flipped=false;renderCard()}
+function askExample(q){document.getElementById("tutorInput").value=q;return false}
+function sendTutor(e){e.preventDefault();let q=document.getElementById("tutorInput").value.trim();if(!q)return;let low=q.toLowerCase(),answer="This prototype tutor is not connected to an AI model yet. Try asking about cloud computing, IaaS, PaaS, SaaS, shared responsibility, or scalability.";if(low.includes("iaas")||low.includes("paas")||low.includes("saas"))answer="Imagine GeekHub is helping a school run a website. IaaS is like renting a virtual server and managing its operating system. PaaS is like deploying the website to a managed platform. SaaS is like using a finished online product—such as webmail—without managing its underlying servers.";else if(low.includes("responsibility"))answer="The shared responsibility model divides security duties between the cloud provider and the customer. The provider secures parts of the cloud infrastructure; the customer's duties depend on the service. With IaaS, the customer manages more. With SaaS, the provider manages more of the stack.";else if(low.includes("virtual machine")||low.includes("container"))answer="A virtual machine runs its own guest operating system and is useful when you need more OS-level control or compatibility. Containers package an application and its dependencies more lightly, which can make deployment and scaling faster. The right choice depends on the workload.";else if(low.includes("cloud computing"))answer="Cloud computing is the delivery of computing services over a network. Instead of buying and maintaining every server yourself, you can provision services from a cloud provider as needed. For GeekHub, that could mean hosting a school website without owning a physical server.";document.getElementById("chatHistory").insertAdjacentHTML("beforeend",`<div class="chat-message"><strong>You</strong><br>${escapeHtml(q)}</div><div class="chat-message ai"><strong>CloudPath Tutor · Prepared prototype response</strong><br>${answer}</div>`);document.getElementById("tutorInput").value=""}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function resetProgress(){if(confirm("Reset all local prototype progress?")){progress={done:[],correct:0,attempts:0,wrong:[]};save();renderRoadmap();toast("Prototype progress reset")}}
+function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+renderPaths();renderRoadmap();renderQuestion();renderCard();renderStats();
+</script>
+</body>
+</html>
